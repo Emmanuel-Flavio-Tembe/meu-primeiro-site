@@ -9,7 +9,7 @@
             color: #ffffff;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 30px 15px;
+            padding: 20px 10px;
         }
         h1 {
             color: #00d2fc;
@@ -17,17 +17,18 @@
         .container-imagens {
             display: flex;
             justify-content: center;
+            flex-direction: column; /* Puts images on top of each other for maximum width */
+            align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
             margin-bottom: 30px;
         }
         .imagem-tech {
-            width: 340px; /* Tamanho super grande ativado */
-            height: 340px; /* Tamanho super grande ativado */
-            max-width: 95%; /* Garante que não vai cortar nas laterais do celular */
+            width: 100%; /* Takes up 100% of the available width */
+            max-width: 500px; /* Limits size on computers so it doesn't get distorted */
+            height: auto; /* Automatically adjusts height so the photo doesn't look stretched */
             border-radius: 16px;
             border: 4px solid #00d2fc;
-            object-fit: cover;
+            box-sizing: border-box;
         }
         .botao {
             display: inline-block;
