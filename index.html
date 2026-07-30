@@ -7,14 +7,22 @@
         body {
             background-color: #000000;
             color: #ffffff;
-            /* ALTERADO: Fonte de computador ativada para o site todo */
             font-family: 'Courier New', Courier, monospace; 
             text-align: center;
             padding: 20px 10px;
         }
         h1 {
             color: #39ff14;
+            text-shadow: 0 0 10px #39ff14; /* Brilho inicial nas letras */
+            animation: piscar 1.5s infinite; /* ALTERADO: Ativa a animação contínua */
         }
+        
+        /* ALTERADO: Nova regra de animação que faz o texto pulsar/piscar */
+        @keyframes piscar {
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px #39ff14; }
+            50% { opacity: 0.3; text-shadow: 0 0 2px #39ff14; }
+        }
+        
         .container-imagens {
             display: flex;
             justify-content: center;
@@ -83,7 +91,6 @@
             color: #ffffff;
             box-sizing: border-box;
             font-size: 16px;
-            /* ALTERADO: Garante que os campos de texto também usem a mesma fonte */
             font-family: inherit; 
         }
         .campo-formulario::placeholder {
