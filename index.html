@@ -50,9 +50,39 @@
             text-decoration: none;
             font-weight: bold;
             border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
         .botao:hover {
             background-color: #ffffff;
+        }
+        
+        /* Novos estilos para o Formulário */
+        .secao-contato {
+            margin-top: 50px;
+            background-color: #162447;
+            padding: 30px 20px;
+            border-radius: 16px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #00d2fc;
+            box-sizing: border-box;
+        }
+        .campo-formulario {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #00d2fc;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .campo-formulario::placeholder {
+            color: #888888;
         }
     </style>
 </head>
@@ -62,26 +92,40 @@
         <!-- Item 1: Imagem + Legenda -->
         <div class="bloco-item">
             <img src="Screenshot_20260707-194552.jpg" alt="Imagem 1" class="imagem-tech">
-            <p class="legenda-imagem">os meios de comunicação, ja criados pelo homem para facilitar a comunicação a distância, não há quem diga que os meios de comunicação não são importantes</p>
+            <p class="legenda-imagem">Esta é a legenda da minha primeira imagem de informática</p>
         </div>
 
-        <!-- Item 2: Imagem + Legenda (Nome Corrigido para Screenshot) -->
+        <!-- Item 2: Imagem + Legenda -->
         <div class="bloco-item">
             <img src="Screenshot_20260729-113449.jpg" alt="Imagem 2" class="imagem-tech">
-            <p class="legenda-imagem">A Tecnologia é fascinante,os jogos e tudo,a tecnologia nós mostra uma realidade,ou , a tecnologia é uma felicidade</p>
+            <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela</p>
         </div>
-        <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class=imagem-tech">
-        <p class="legenda-imagem">La tecnologia 
     </div>
-     
 
     <h1>Olá, Mundo!</h1>
     <p>Meu nome é Emmanuel Flávio.</p>
     <p>Tenho 19 anos e sou estudante de informática!</p>
     
-    <br><br>
-    
     <a href="https://github.com" target="_blank" class="botao">Meu GitHub</a>
     <a href="https://wa.me" target="_blank" class="botao">Fale Comigo no WhatsApp</a>
+
+    <!-- SEÇÃO DO FORMULÁRIO DE CONTATO -->
+    <div class="secao-contato">
+        <h2>Envie uma Mensagem</h2>
+        
+        <!-- Altere o e-mail abaixo para o seu e-mail real para receber as mensagens -->
+        <form action="https://staticforms.xyz" method="post">
+            <input type="hidden" name="accessKey" value="f7b1e4b9-8e54-41f4-abe7-eceede3e855a"> <!-- Chave pública de teste -->
+            <input type="hidden" name="redirectTo" value="https://github.io">
+            
+            <input type="text" name="name" class="campo-formulario" placeholder="Seu Nome" required>
+            <input type="email" name="email" class="campo-formulario" placeholder="Seu E-mail" required>
+            <textarea name="message" class="campo-formulario" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+            
+            <button type="submit" class="botao">Enviar Mensagem</button>
+        </form>
+    </div>
+
 </body>
-</html>
+                </html>
+                
