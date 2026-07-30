@@ -53,9 +53,16 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            /* ADICIONADO: Faz qualquer mudança visual durar 0.3 segundos de forma suave */
+            transition: all 0.3s ease; 
         }
-        .botao:hover {
+        
+        /* ADICIONADO: Controla o que acontece quando passa o dedo/mouse */
+        .botao:hover, .botao:active {
             background-color: #ffffff;
+            color: #1a1a2e;
+            transform: scale(1.1); /* Faz o botão crescer 10% do tamanho real */
+            box-shadow: 0px 0px 15px #00d2fc; /* Cria um brilho azul em volta do botão */
         }
         
         /* Novos estilos para o Formulário */
@@ -100,6 +107,8 @@
             <img src="Screenshot_20260729-113449.jpg" alt="Imagem 2" class="imagem-tech">
             <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela</p>
         </div>
+        
+        <!-- Terceira Imagem mantida exatamente como você deixou -->
         <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="imagem-tech">
     </div>
 
@@ -114,9 +123,8 @@
     <div class="secao-contato">
         <h2>Envie uma Mensagem</h2>
         
-        <!-- Altere o e-mail abaixo para o seu e-mail real para receber as mensagens -->
         <form action="https://staticforms.xyz" method="post">
-            <input type="hidden" name="accessKey" value="f7b1e4b9-8e54-41f4-abe7-eceede3e855a"> <!-- Chave pública de teste -->
+            <input type="hidden" name="accessKey" value="f7b1e4b9-8e54-41f4-abe7-eceede3e855a">
             <input type="hidden" name="redirectTo" value="https://github.io">
             
             <input type="text" name="name" class="campo-formulario" placeholder="Seu Nome" required>
@@ -128,5 +136,5 @@
     </div>
 
 </body>
-                </html>
-                
+    </html>
+    
