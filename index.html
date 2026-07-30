@@ -5,14 +5,15 @@
     <title>Meu Primeiro Site</title>
     <style>
         body {
-            background-color: #000000; /* ALTRADO: Preto total estilo hacker */
+            background-color: #000000;
             color: #ffffff;
-            font-family: Arial, sans-serif;
+            /* ALTERADO: Fonte de computador ativada para o site todo */
+            font-family: 'Courier New', Courier, monospace; 
             text-align: center;
             padding: 20px 10px;
         }
         h1 {
-            color: #39ff14; /* ALTERADO: Verde neon nos títulos */
+            color: #39ff14;
         }
         .container-imagens {
             display: flex;
@@ -31,20 +32,20 @@
             width: 100%;
             height: auto;
             border-radius: 16px;
-            border: 4px solid #39ff14; /* ALTERADO: Borda verde neon */
+            border: 4px solid #39ff14;
             box-sizing: border-box;
         }
         .legenda-imagem {
             margin-top: 10px;
             font-size: 16px;
-            color: #39ff14; /* ALTERADO: Legenda verde neon */
+            color: #39ff14;
             font-weight: bold;
             font-style: italic;
         }
         .botao {
             display: inline-block;
-            background-color: #39ff14; /* ALTERADO: Botão verde neon */
-            color: #000000; /* ALTERADO: Texto do botão preto */
+            background-color: #39ff14;
+            color: #000000;
             padding: 12px 24px;
             margin: 10px;
             text-decoration: none;
@@ -59,17 +60,17 @@
             background-color: #ffffff;
             color: #000000;
             transform: scale(1.1);
-            box-shadow: 0px 0px 15px #39ff14; /* ALTERADO: Brilho verde neon */
+            box-shadow: 0px 0px 15px #39ff14;
         }
         .secao-contato {
             margin-top: 50px;
-            background-color: #0d0d0d; /* ALTERADO: Fundo escuro da caixa */
+            background-color: #0d0d0d;
             padding: 30px 20px;
             border-radius: 16px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            border: 2px solid #39ff14; /* ALTERADO: Borda da caixa verde */
+            border: 2px solid #39ff14;
             box-sizing: border-box;
         }
         .campo-formulario {
@@ -77,11 +78,13 @@
             padding: 12px;
             margin: 10px 0;
             border-radius: 8px;
-            border: 1px solid #39ff14; /* ALTERADO: Borda dos campos verde */
-            background-color: #000000; /* ALTERADO: Dentro dos campos preto */
+            border: 1px solid #39ff14;
+            background-color: #000000;
             color: #ffffff;
             box-sizing: border-box;
             font-size: 16px;
+            /* ALTERADO: Garante que os campos de texto também usem a mesma fonte */
+            font-family: inherit; 
         }
         .campo-formulario::placeholder {
             color: #555555;
@@ -130,5 +133,5 @@
     </div>
 
 </body>
-    </html>
+        </html>
     
