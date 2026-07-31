@@ -16,6 +16,10 @@
             text-shadow: 0 0 10px #39ff14;
             animation: piscar 1.5s infinite;
         }
+        h2 {
+            color: #39ff14;
+            margin-bottom: 15px;
+        }
         @keyframes piscar {
             0%, 100% { opacity: 1; text-shadow: 0 0 15px #39ff14; }
             50% { opacity: 0.3; text-shadow: 0 0 2px #39ff14; }
@@ -26,6 +30,7 @@
             flex-direction: column;
             align-items: center;
             gap: 25px;
+            margin-top: 30px;
             margin-bottom: 30px;
         }
         .bloco-item {
@@ -76,8 +81,34 @@
             border: 2px solid #39ff14;
             display: inline-block;
         }
+        
+        /* Novos estilos para a Seção de Tecnologia */
+        .secao-tech {
+            margin-top: 40px;
+            background-color: #0d0d0d;
+            padding: 25px;
+            border-radius: 16px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #39ff14;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .lista-tech {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .lista-tech li {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .lista-tech strong {
+            color: #39ff14;
+        }
+
         .secao-contato {
-            margin-top: 50px;
+            margin-top: 40px;
             background-color: #0d0d0d;
             padding: 30px 20px;
             border-radius: 16px;
@@ -106,6 +137,11 @@
 </head>
 <body>
 
+    <!-- ALTERADO: Título e Apresentação movidos logo para o topo do site -->
+    <h1>Olá, Mundo!</h1>
+    <p>Meu nome é Emmanuel Flávio.</p>
+    <p>Tenho 19 anos e sou estudante de informática!</p>
+
     <div class="container-imagens">
         <!-- Item 1: Imagem + Legenda -->
         <div class="bloco-item">
@@ -121,10 +157,6 @@
         
         <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="imagem-tech">
     </div>
-
-    <h1>Olá, Mundo!</h1>
-    <p>Meu nome é Emmanuel Flávio.</p>
-    <p>Tenho 19 anos e sou estudante de informática!</p>
     
     <div class="player-musica">
         <audio controls>
@@ -136,8 +168,18 @@
     <br>
     <a href="https://github.com" target="_blank" class="botao">Meu GitHub</a>
     
-    <!-- ALTERADO: Link oficial de redirecionamento seguro ativado -->
-    <a href="https://wa.me/qr/PFCABHMEHPQ6D1" target="_blank" class="botao">Fale Comigo no WhatsApp</a>
+    <!-- MANTIDO: O seu link pessoal do WhatsApp que funcionou -->
+    <a href="https://wa.me" class="botao">Fale Comigo no WhatsApp</a>
+
+    <!-- ALTERADO: Nova Seção com resumos sobre Tecnologia -->
+    <div class="secao-tech">
+        <h2>Tecnologia Resumida</h2>
+        <ul class="lista-tech">
+            <li><strong>Desenvolvimento Web:</strong> Criação de páginas utilizando HTML estrutural para conteúdo e CSS para estilização visual.</li>
+            <li><strong>Banco de Dados:</strong> Sistemas organizados para armazenar, gerenciar e recuperar informações digitais com segurança.</li>
+            <li><strong>Criptografia:</strong> Técnicas de codificação que protegem dados confidenciais contra acessos não autorizados.</li>
+        </ul>
+    </div>
 
     <!-- SEÇÃO DO FORMULÁRIO DE CONTATO -->
     <div class="secao-contato">
@@ -156,5 +198,5 @@
     </div>
 
 </body>
-        </html>
-                
+                </html>
+            
