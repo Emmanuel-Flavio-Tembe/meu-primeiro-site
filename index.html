@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Meu Primeiro Site</title>
     <style>
+        /* Definindo o ponto de partida do topo */
+        html {
+            scroll-behavior: smooth; /* Faz a subida da página ser suave */
+        }
         body {
             background-color: #000000;
             color: #ffffff;
@@ -108,6 +112,48 @@
             color: #39ff14;
             font-size: 19px;
         }
+        
+        /* ADICIONADO: Estilo para a caixa da dica do dia */
+        .caixa-dica {
+            margin-top: 40px;
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px dashed #39ff14; /* Borda pontilhada */
+            box-sizing: border-box;
+        }
+        .caixa-dica p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+        
+        /* ADICIONADO: Estilo para o Botão de Voltar ao Topo */
+        .botao-topo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #39ff14;
+            color: #000000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 46px; /* Alinha a seta no meio do círculo */
+            box-shadow: 0px 0px 10px #39ff14;
+            transition: all 0.3s ease;
+            z-index: 100; /* Garante que fica por cima de tudo */
+        }
+        .botao-topo:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+        }
+
         .secao-contato {
             margin-top: 40px;
             background-color: #0d0d0d;
@@ -139,6 +185,9 @@
 </head>
 <body>
 
+    <!-- Âncora invisível para o botão voltar ao topo -->
+    <div id="topo"></div>
+
     <h1>Olá, Mundo!</h1>
     <p>Meu nome é Emmanuel Flávio.</p>
     <p>Tenho 19 anos e sou estudante de informática!</p>
@@ -167,10 +216,9 @@
     </div>
     
     <br>
-    <a href="https://github.com" target="_blank" class="botao">Meu GitHub</a>
-    
-    <!-- LINK TOTALMENTE PROTEGIDO: Seu endereço de QR code real completo -->
-    <a href="https://wa.me/qr/PFCABHMEHPQ6D1" class="botao">Fale Comigo no WhatsApp</a>
+    <!-- ADICIONADO: Símbolos luminosos de terminal dentro dos botões principais -->
+    <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
+    <a href="https://wa.me" class="botao">[💬] Fale no WhatsApp</a>
 
     <div class="secao-tech">
         <h2>Tecnologia Fascinante</h2>
@@ -182,6 +230,12 @@
             <li><strong>Realidade Virtual (VR):</strong> Criação de ambientes e mundos digitais em 3D totalmente imersivos, simulando experiências do mundo real através de óculos especiais.</li>
             <li><strong>Blockchain:</strong> Sistema de blocos criptografados super seguro que permite transações financeiras e registros de dados sem a necessidade de um banco central intermediário.</li>
         </ul>
+    </div>
+
+    <!-- ADICIONADO: Nova Caixa da Dica de Informática do Dia -->
+    <div class="caixa-dica">
+        <h2>💡 Dica de Informática</h2>
+        <p><strong>Atalho de Mestre:</strong> Se você fechou uma aba sem querer no seu navegador do computador, pressione <strong>Ctrl + Shift + T</strong> juntas. A aba fechada abre novamente na mesma hora!</p>
     </div>
 
     <div class="secao-contato">
@@ -199,6 +253,9 @@
         </form>
     </div>
 
+    <!-- ADICIONADO: Botão Flutuante de Voltar ao Topo (Seta para cima) -->
+    <a href="#topo" class="botao-topo">▲</a>
+
 </body>
-    </html>
+            </html>
     
