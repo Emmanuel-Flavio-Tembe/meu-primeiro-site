@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Meu Primeiro Site</title>
-    self.options={
-    "domain": "3nbf4.com",
-    "zoneId": 11507070
-}
-self.lary = ""
-importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+    
+    <!-- CONEXÃO DO ANÚNCIO: Código de ativação do Monetag -->
+    <script src="sw.js"></script>
+
     <style>
-        /* Definindo o ponto de partida do topo */
         html {
-            scroll-behavior: smooth; /* Faz a subida da página ser suave */
+            scroll-behavior: smooth;
         }
         body {
             background-color: #000000;
@@ -118,8 +115,6 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
             color: #39ff14;
             font-size: 19px;
         }
-        
-        /* ADICIONADO: Estilo para a caixa da dica do dia */
         .caixa-dica {
             margin-top: 40px;
             background-color: #0d0d0d;
@@ -128,7 +123,7 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            border: 2px dashed #39ff14; /* Borda pontilhada */
+            border: 2px dashed #39ff14;
             box-sizing: border-box;
         }
         .caixa-dica p {
@@ -136,8 +131,6 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
             line-height: 1.5;
             margin: 5px 0;
         }
-        
-        /* ADICIONADO: Estilo para o Botão de Voltar ao Topo */
         .botao-topo {
             position: fixed;
             bottom: 20px;
@@ -150,16 +143,15 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
             text-decoration: none;
             font-weight: bold;
             font-size: 24px;
-            line-height: 46px; /* Alinha a seta no meio do círculo */
+            line-height: 46px;
             box-shadow: 0px 0px 10px #39ff14;
             transition: all 0.3s ease;
-            z-index: 100; /* Garante que fica por cima de tudo */
+            z-index: 100;
         }
         .botao-topo:hover {
             background-color: #ffffff;
             transform: scale(1.1);
         }
-
         .secao-contato {
             margin-top: 40px;
             background-color: #0d0d0d;
@@ -191,7 +183,6 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
 </head>
 <body>
 
-    <!-- Âncora invisível para o botão voltar ao topo -->
     <div id="topo"></div>
 
     <h1>Olá, Mundo!</h1>
@@ -222,8 +213,9 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
     </div>
     
     <br>
-    <!-- ADICIONADO: Símbolos luminosos de terminal dentro dos botões principais -->
     <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
+    
+    <!-- LINK DO WHATSAPP TRAVADO E COMPLETAMENTE ORIGINAL -->
     <a href="https://wa.me/qr/PFCABHMEHPQ6D1" class="botao">[💬] Fale no WhatsApp</a>
 
     <div class="secao-tech">
@@ -238,7 +230,6 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
         </ul>
     </div>
 
-    <!-- ADICIONADO: Nova Caixa da Dica de Informática do Dia -->
     <div class="caixa-dica">
         <h2>💡 Dica de Informática</h2>
         <p><strong>Atalho de Mestre:</strong> Se você fechou uma aba sem querer no seu navegador do computador, pressione <strong>Ctrl + Shift + T</strong> juntas. A aba fechada abre novamente na mesma hora!</p>
@@ -259,9 +250,8 @@ importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
         </form>
     </div>
 
-    <!-- ADICIONADO: Botão Flutuante de Voltar ao Topo (Seta para cima) -->
     <a href="#topo" class="botao-topo">▲</a>
 
 </body>
-            </html>
+                </html>
     
