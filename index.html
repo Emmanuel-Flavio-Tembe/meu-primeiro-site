@@ -12,7 +12,7 @@
             color: #ffffff;
             font-family: 'Courier New', Courier, monospace; 
             text-align: center;
-            padding: 20px 0; /* Remove padding lateral do fundo */
+            padding: 20px 0; 
             margin: 0;
         }
         h1 {
@@ -24,28 +24,29 @@
         }
         h2 {
             color: #39ff14;
-            margin-bottom: 20px;
-            font-size: 48px; 
+            margin-bottom: 10px;
+            font-size: 32px; 
             padding: 0 15px;
-        }
-        /* ALTERADO: Forçado tamanho equivalente à fonte 16 do Word no computador */
-        p, li, span, select, button {
-            font-size: 31px !important;
-            line-height: 1.1;
-            margin: 0 !important; 
         }
         @keyframes piscar {
             0%, 100% { opacity: 1; text-shadow: 0 0 25px #39ff14; }
             50% { opacity: 0.3; text-shadow: 0 0 5px #39ff14; }
         }
         
-        /* ALTERADO: Imagens cobrindo 100% da tela de uma ponta à outra */
+        /* Palavras juntas coladas e sem espaçamento vertical */
+        p, li, span, select, button {
+            font-size: 21px !important;
+            line-height: 1.1 !important; 
+            margin: 0 !important;        
+        }
+        
+        /* Imagens gigantes de uma ponta à outra da tela */
         .container-imagens {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 15px;
             margin-top: 30px;
             margin-bottom: 30px;
             width: 100%;
@@ -55,8 +56,8 @@
             text-align: center;
         }
         .img-tech-padrao {
-            width: 300vw; /* Ocupa toda a largura física da tela */
-            height: 400px;
+            width: 100vw; 
+            height: auto;
             border-top: 4px solid #39ff14;
             border-bottom: 4px solid #39ff14;
             border-left: none;
@@ -65,7 +66,7 @@
             display: block;
         }
         .legenda-imagem {
-            margin-top: 12px;
+            margin-top: 5px;
             color: #39ff14;
             font-weight: bold;
             padding: 0 15px;
@@ -76,9 +77,9 @@
             margin-top: 25px;
             margin-bottom: 25px;
         }
-        /* ALTERADO: Anúncio em formato retangular com fita de LED vibrante */
+        /* Anúncio em formato retangular pequeno com fita de LED vibrante */
         .anuncio-led-retangular {
-            width: 300px; /* Formato retangular horizontal */
+            width: 300px; 
             height: 90px;
             border-radius: 8px; 
             object-fit: cover;
@@ -98,9 +99,9 @@
         }
 
         .secao-tech {
-            margin-top: 50px;
+            margin-top: 40px;
             background-color: #0d0d0d;
-            padding: 35px 20px; 
+            padding: 25px 20px; 
             width: 92%;
             max-width: 700px; 
             margin-left: auto;
@@ -115,17 +116,18 @@
             padding-left: 25px;
         }
         .lista-tech li {
-            margin-bottom: 25px;
+            margin-bottom: 12px; 
         }
         .lista-tech strong {
             color: #39ff14;
             font-size: 23px !important; 
+            display: block; 
         }
         
         .caixa-dica {
-            margin-top: 50px;
+            margin-top: 40px;
             background-color: #0d0d0d;
-            padding: 30px 20px;
+            padding: 20px;
             border-radius: 12px;
             width: 92%;
             max-width: 700px;
@@ -181,7 +183,7 @@
             z-index: 100;
         }
         .secao-contato {
-            margin-top: 50px;
+            margin-top: 40px;
             background-color: #0d0d0d;
             padding: 35px 20px; 
             width: 92%;
@@ -213,9 +215,9 @@
     <div id="topo"></div>
 
     <h1>Olá, Mundo!</h1>
-    <p style="font-size: 24px !important;">Meu nome é Emmanuel Flávio e sou experiente em informática.</p>
+    <p style="font-size: 24px !important; margin-bottom: 5px !important;">Meu nome é Emmanuel Flávio.</p>
 
-    <!-- Imagens configuradas para cobrir a tela inteira de ponta a ponta -->
+    <!-- Imagens cobrindo a tela de ponta a ponta -->
     <div class="container-imagens">
         <div class="bloco-item">
             <img src="Screenshot_20260707-194552.jpg" alt="Imagem 1" class="img-tech-padrao">
@@ -243,11 +245,11 @@
     <br>
     <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
     
-    <!-- MANTIDO PROTEGIDO: O seu link real de QR Code do WhatsApp original -->
+    <!-- LINK DO WHATSAPP 100% PROTEGIDO E INTEGRAL -->
     <a href="https://wa.me" class="botao">[💬] Fale no WhatsApp</a>
     
     <br>
-    <!-- MANTIDO E FORÇADO: O seu SmartLink do Monetag em formato retangular com moldura LED brilhante -->
+    <!-- SMARTLINK DO MONETAG CAMUFLADO NO RETÂNGULO LED BRILHANTE -->
     <a href="https://omg10.com" target="_blank" class="banner-disfarçado">
         <img src="Screenshot_20260729-113449.jpg" alt="Destaques de Tecnologia" class="anuncio-led-retangular">
     </a>
@@ -274,4 +276,6 @@
         
         <form action="https://staticforms.xyz" method="post">
             <input type="hidden" name="accessKey" value="f7b1e4b9-8e54-41f4-abe7-eceede3e855a">
-        
+            <input type="text" name="name" class="campo-formulario" placeholder="Seu Nome" required>
+            <input type="email" name="email" class="campo-formulario" placeholder="Seu E-mail" required>
+                
