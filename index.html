@@ -22,12 +22,14 @@
         h2 {
             color: #39ff14;
             margin-bottom: 15px;
-            font-size: 26px;
+            font-size: 32px; /* Título maior */
         }
         @keyframes piscar {
             0%, 100% { opacity: 1; text-shadow: 0 0 15px #39ff14; }
             50% { opacity: 0.3; text-shadow: 0 0 2px #39ff14; }
         }
+        
+        /* Configuração para TODAS as 3 imagens terem o mesmo tamanho proporcional */
         .container-imagens {
             display: flex;
             justify-content: center;
@@ -56,6 +58,7 @@
             font-weight: bold;
             font-style: italic;
         }
+        
         .botao {
             display: inline-block;
             background-color: #39ff14;
@@ -86,33 +89,42 @@
             display: inline-block;
         }
         
-        /* NOVO ESTILO: Cria uma capa de anúncio disfarçada e brilhante */
+        /* ESTILO DO ANÚNCIO: Tamanho pequeno com efeito LED brilhante pulsante */
         .banner-disfarçado {
             display: inline-block;
             margin-top: 15px;
             margin-bottom: 15px;
-            width: 100%;
-            max-width: 500px;
             transition: all 0.3s ease;
         }
         .imagem-capa-anuncio {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 3px dashed #39ff14; /* Borda estilizada de tecnologia */
+            width: 160px; /* Tamanho pequeno fixado */
+            height: 160px;
+            border-radius: 50%; /* Formato circular para parecer um botão de LED */
+            object-fit: cover;
             box-sizing: border-box;
+            border: 4px solid #39ff14;
+            /* Efeito de iluminação LED forte em volta da imagem */
+            box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14; 
+            animation: neonLed 1.5s infinite alternate;
         }
-        .banner-disfarçado:hover {
-            transform: scale(1.03);
-            filter: brightness(1.2);
+        @keyframes neonLed {
+            0% {
+                box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+                filter: brightness(1);
+            }
+            100% {
+                box-shadow: 0 0 25px #39ff14, 0 0 45px #39ff14;
+                filter: brightness(1.3);
+            }
         }
 
+        /* CONFIGURAÇÃO: Seção de tecnologia expandida com palavras MUITO GRANDES */
         .secao-tech {
             margin-top: 40px;
             background-color: #0d0d0d;
             padding: 40px 30px; 
             width: 100%;
-            max-width: 700px; 
+            max-width: 750px; 
             margin-left: auto;
             margin-right: auto;
             border: 3px solid #39ff14;
@@ -125,27 +137,29 @@
             padding-left: 20px;
         }
         .lista-tech li {
-            margin-bottom: 22px;
+            margin-bottom: 25px;
             line-height: 1.6;
-            font-size: 18px;
+            font-size: 26px; /* ALTERADO: Palavras de resumo muito grandes */
         }
         .lista-tech strong {
             color: #39ff14;
-            font-size: 19px;
+            font-size: 28px; /* ALTERADO: Títulos internos muito grandes */
         }
+        
         .caixa-dica {
             margin-top: 40px;
             background-color: #0d0d0d;
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
-            max-width: 700px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
             border: 2px dashed #39ff14;
             box-sizing: border-box;
+            text-align: left;
         }
         .caixa-dica p {
-            font-size: 18px;
+            font-size: 24px; /* Dica de informática maior também */
             line-height: 1.5;
             margin: 5px 0;
         }
@@ -175,7 +189,7 @@
             background-color: #0d0d0d;
             padding: 40px 30px; 
             width: 100%;
-            max-width: 700px; 
+            max-width: 750px; 
             margin-left: auto;
             margin-right: auto;
             border: 3px solid #39ff14;
@@ -191,7 +205,7 @@
             background-color: #000000;
             color: #ffffff;
             box-sizing: border-box;
-            font-size: 18px;
+            font-size: 20px; 
             font-family: inherit; 
         }
         .campo-formulario::placeholder {
@@ -204,23 +218,25 @@
     <div id="topo"></div>
 
     <h1>Olá, Mundo!</h1>
-    <p>Meu nome é Emmanuel Flávio.</p>
-    <p>Tenho 19 anos e sou estudante de informática!</p>
+    <p style="font-size: 22px;">Meu nome é Emmanuel Flávio.</p>
+    <p style="font-size: 22px;">Tenho 19 anos e sou estudante de informática!</p>
 
+    <!-- As 3 Imagens agora possuem o mesmo tamanho estrutural idêntico -->
     <div class="container-imagens">
-        <!-- Item 1: Imagem + Legenda -->
         <div class="bloco-item">
             <img src="Screenshot_20260707-194552.jpg" alt="Imagem 1" class="imagem-tech">
             <p class="legenda-imagem">Esta é a legenda da minha primeira imagem de informática</p>
         </div>
 
-        <!-- Item 2: Imagem + Legenda -->
         <div class="bloco-item">
             <img src="Screenshot_20260729-113449.jpg" alt="Imagem 2" class="imagem-tech">
             <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela</p>
         </div>
         
-        <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="imagem-tech">
+        <div class="bloco-item">
+            <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="imagem-tech">
+            <p class="legenda-imagem">Esta é a legenda da minha terceira imagem</p>
+        </div>
     </div>
     
     <div class="player-musica">
@@ -233,11 +249,11 @@
     <br>
     <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
     
-    <!-- MANTIDO TRAVADO: O seu link real de QR Code do WhatsApp -->
+    <!-- MANTIDO TRAVADO: O seu link real de QR Code do WhatsApp original -->
     <a href="https://wa.me" class="botao">[💬] Fale no WhatsApp</a>
     
     <br>
-    <!-- ALTERADO: O seu SmartLink agora está camuflado dentro desta imagem de capa -->
+    <!-- MANTIDO E CAMUFLADO: O seu SmartLink do Monetag em tamanho pequeno e com efeito LED vibrante -->
     <a href="https://omg10.com" target="_blank" class="banner-disfarçado">
         <img src="Screenshot_20260729-113449.jpg" alt="Destaques de Tecnologia" class="imagem-capa-anuncio">
     </a>
@@ -260,22 +276,4 @@
     </div>
 
     <div class="secao-contato">
-        <h2>Envie uma Mensagem</h2>
         
-        <form action="https://staticforms.xyz" method="post">
-            <input type="hidden" name="accessKey" value="f7b1e4b9-8e54-41f4-abe7-eceede3e855a">
-            <input type="hidden" name="redirectTo" value="https://github.io">
-            
-            <input type="text" name="name" class="campo-formulario" placeholder="Seu Nome" required>
-            <input type="email" name="email" class="campo-formulario" placeholder="Seu E-mail" required>
-            <textarea name="message" class="campo-formulario" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
-            
-            <button type="submit" class="botao">Enviar Mensagem</button>
-        </form>
-    </div>
-
-    <a href="#topo" class="botao-topo">▲</a>
-
-</body>
-    </html>
-    
