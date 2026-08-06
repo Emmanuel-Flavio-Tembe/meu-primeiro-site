@@ -85,6 +85,28 @@
             border: 2px solid #39ff14;
             display: inline-block;
         }
+        
+        /* NOVO ESTILO: Cria uma capa de anúncio disfarçada e brilhante */
+        .banner-disfarçado {
+            display: inline-block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.3s ease;
+        }
+        .imagem-capa-anuncio {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 3px dashed #39ff14; /* Borda estilizada de tecnologia */
+            box-sizing: border-box;
+        }
+        .banner-disfarçado:hover {
+            transform: scale(1.03);
+            filter: brightness(1.2);
+        }
+
         .secao-tech {
             margin-top: 40px;
             background-color: #0d0d0d;
@@ -211,11 +233,14 @@
     <br>
     <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
     
-    <!-- SEU LINK DO WHATSAPP TRAVADO, IMUTÁVEL E ORIGINAL -->
+    <!-- MANTIDO TRAVADO: O seu link real de QR Code do WhatsApp -->
     <a href="https://wa.me" class="botao">[💬] Fale no WhatsApp</a>
     
-    <!-- NOVO BOTÃO DE LUCROS COM O SEU SMARTLINK EMBUTIDO -->
-    <a href="https://omg10.com/4/11513883" target="_blank" class="botao">[💰] Apoiar o Site</a>
+    <br>
+    <!-- ALTERADO: O seu SmartLink agora está camuflado dentro desta imagem de capa -->
+    <a href="https://omg10.com" target="_blank" class="banner-disfarçado">
+        <img src="Screenshot_20260729-113449.jpg" alt="Destaques de Tecnologia" class="imagem-capa-anuncio">
+    </a>
 
     <div class="secao-tech">
         <h2>Tecnologia Fascinante</h2>
@@ -252,5 +277,5 @@
     <a href="#topo" class="botao-topo">▲</a>
 
 </body>
-        </html>
+    </html>
     
