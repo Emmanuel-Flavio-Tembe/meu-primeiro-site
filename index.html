@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Meu Primeiro Site</title>
+    
+    <!-- CONEXÃO DO ANÚNCIO: Código de ativação do Monetag -->
+    <script src="sw.js"></script>
+
     <style>
         html {
             scroll-behavior: smooth;
@@ -12,159 +16,120 @@
             color: #ffffff;
             font-family: 'Courier New', Courier, monospace; 
             text-align: center;
-            padding: 20px 0; 
-            margin: 0;
+            padding: 20px 10px;
         }
         h1 {
             color: #39ff14;
-            text-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
+            text-shadow: 0 0 10px #39ff14;
             animation: piscar 1.5s infinite;
-            font-size: 46px; 
-            padding: 0 10px;
         }
         h2 {
             color: #39ff14;
-            margin-bottom: 10px;
-            font-size: 32px; 
-            padding: 0 15px;
+            margin-bottom: 15px;
+            font-size: 26px;
         }
         @keyframes piscar {
-            0%, 100% { opacity: 1; text-shadow: 0 0 25px #39ff14; }
-            50% { opacity: 0.3; text-shadow: 0 0 5px #39ff14; }
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px #39ff14; }
+            50% { opacity: 0.3; text-shadow: 0 0 2px #39ff14; }
         }
-        
-        /* Palavras juntas coladas e sem espaçamento vertical */
-        p, li, span, select, button {
-            font-size: 21px !important;
-            line-height: 1.1 !important; 
-            margin: 0 !important;        
-        }
-        
-        /* Imagens gigantes de uma ponta à outra da tela */
         .container-imagens {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 25px;
             margin-top: 30px;
             margin-bottom: 30px;
-            width: 100%;
         }
         .bloco-item {
             width: 100%;
+            max-width: 500px;
             text-align: center;
         }
-        .img-tech-padrao {
-            width: 100vw; 
+        .imagem-tech {
+            width: 100%;
             height: auto;
-            border-top: 4px solid #39ff14;
-            border-bottom: 4px solid #39ff14;
-            border-left: none;
-            border-right: none;
+            border-radius: 16px;
+            border: 4px solid #39ff14;
             box-sizing: border-box;
-            display: block;
         }
         .legenda-imagem {
-            margin-top: 5px;
+            margin-top: 10px;
+            font-size: 16px;
             color: #39ff14;
             font-weight: bold;
-            padding: 0 15px;
+            font-style: italic;
         }
-        
-        .banner-disfarçado {
-            display: inline-block;
-            margin-top: 25px;
-            margin-bottom: 25px;
-        }
-        /* Anúncio em formato retangular pequeno com fita de LED vibrante */
-        .anuncio-led-retangular {
-            width: 300px; 
-            height: 90px;
-            border-radius: 8px; 
-            object-fit: cover;
-            box-sizing: border-box;
-            border: 4px solid #39ff14;
-            animation: efeitoLed 1.2s infinite alternate ease-in-out;
-        }
-        @keyframes efeitoLed {
-            0% {
-                box-shadow: 0 0 10px #39ff14, 0 0 25px #39ff14;
-                filter: brightness(0.9);
-            }
-            100% {
-                box-shadow: 0 0 25px #39ff14, 0 0 45px #39ff14;
-                filter: brightness(1.3);
-            }
-        }
-
-        .secao-tech {
-            margin-top: 40px;
-            background-color: #0d0d0d;
-            padding: 25px 20px; 
-            width: 92%;
-            max-width: 700px; 
-            margin-left: auto;
-            margin-right: auto;
-            border: 4px solid #39ff14;
-            text-align: left;
-            box-sizing: border-box;
-            border-radius: 16px;
-        }
-        .lista-tech {
-            list-style-type: square;
-            padding-left: 25px;
-        }
-        .lista-tech li {
-            margin-bottom: 12px; 
-        }
-        .lista-tech strong {
-            color: #39ff14;
-            font-size: 23px !important; 
-            display: block; 
-        }
-        
-        .caixa-dica {
-            margin-top: 40px;
-            background-color: #0d0d0d;
-            padding: 20px;
-            border-radius: 12px;
-            width: 92%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 3px dashed #39ff14;
-            box-sizing: border-box;
-            text-align: left;
-        }
-
         .botao {
             display: inline-block;
             background-color: #39ff14;
             color: #000000;
-            padding: 15px 30px;
-            margin: 12px;
+            padding: 12px 24px;
+            margin: 10px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 8px;
             border: none;
             cursor: pointer;
+            font-size: 16px;
             transition: all 0.3s ease; 
         }
         .botao:hover, .botao:active {
             background-color: #ffffff;
             color: #000000;
             transform: scale(1.1);
-            box-shadow: 0px 0px 20px #39ff14;
+            box-shadow: 0px 0px 15px #39ff14;
         }
         .player-musica {
-            margin-top: 25px;
+            margin-top: 20px;
             margin-bottom: 25px;
             background-color: #0d0d0d;
-            padding: 15px;
+            padding: 10px;
             border-radius: 30px;
             border: 2px solid #39ff14;
             display: inline-block;
+        }
+        .secao-tech {
+            margin-top: 40px;
+            background-color: #0d0d0d;
+            padding: 40px 30px; 
+            width: 100%;
+            max-width: 700px; 
+            margin-left: auto;
+            margin-right: auto;
+            border: 3px solid #39ff14;
+            text-align: left;
+            box-sizing: border-box;
+            border-radius: 16px;
+        }
+        .lista-tech {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .lista-tech li {
+            margin-bottom: 22px;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .lista-tech strong {
+            color: #39ff14;
+            font-size: 19px;
+        }
+        .caixa-dica {
+            margin-top: 40px;
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px dashed #39ff14;
+            box-sizing: border-box;
+        }
+        .caixa-dica p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 5px 0;
         }
         .botao-topo {
             position: fixed;
@@ -172,37 +137,43 @@
             right: 20px;
             background-color: #39ff14;
             color: #000000;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             text-decoration: none;
             font-weight: bold;
-            font-size: 26px;
-            line-height: 52px;
-            box-shadow: 0px 0px 12px #39ff14;
+            font-size: 24px;
+            line-height: 46px;
+            box-shadow: 0px 0px 10px #39ff14;
+            transition: all 0.3s ease;
             z-index: 100;
+        }
+        .botao-topo:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
         }
         .secao-contato {
             margin-top: 40px;
             background-color: #0d0d0d;
-            padding: 35px 20px; 
-            width: 92%;
+            padding: 40px 30px; 
+            width: 100%;
             max-width: 700px; 
             margin-left: auto;
             margin-right: auto;
-            border: 4px solid #39ff14;
+            border: 3px solid #39ff14;
             box-sizing: border-box;
             border-radius: 16px;
         }
         .campo-formulario {
             width: 100%;
-            padding: 18px;
-            margin: 15px 0;
+            padding: 15px;
+            margin: 12px 0;
             border-radius: 8px;
             border: 1px solid #39ff14;
             background-color: #000000;
             color: #ffffff;
             box-sizing: border-box;
+            font-size: 18px;
             font-family: inherit; 
         }
         .campo-formulario::placeholder {
@@ -215,24 +186,23 @@
     <div id="topo"></div>
 
     <h1>Olá, Mundo!</h1>
-    <p style="font-size: 24px !important; margin-bottom: 5px !important;">Meu nome é Emmanuel Flávio.</p>
+    <p>Meu nome é Emmanuel Flávio.</p>
+    <p>Tenho 19 anos e sou estudante de informática!</p>
 
-    <!-- Imagens cobrindo a tela de ponta a ponta -->
     <div class="container-imagens">
+        <!-- Item 1: Imagem + Legenda -->
         <div class="bloco-item">
-            <img src="Screenshot_20260707-194552.jpg" alt="Imagem 1" class="img-tech-padrao">
+            <img src="Screenshot_20260707-194552.jpg" alt="Imagem 1" class="imagem-tech">
             <p class="legenda-imagem">Esta é a legenda da minha primeira imagem de informática</p>
         </div>
 
+        <!-- Item 2: Imagem + Legenda -->
         <div class="bloco-item">
-            <img src="Screenshot_20260729-113449.jpg" alt="Imagem 2" class="img-tech-padrao">
+            <img src="Screenshot_20260729-113449.jpg" alt="Imagem 2" class="imagem-tech">
             <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela</p>
         </div>
         
-        <div class="bloco-item">
-            <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="img-tech-padrao">
-            <p class="legenda-imagem">Esta é a legenda da minha terceira imagem</p>
-        </div>
+        <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="imagem-tech">
     </div>
     
     <div class="player-musica">
@@ -245,19 +215,13 @@
     <br>
     <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
     
-    <!-- LINK DO WHATSAPP 100% PROTEGIDO E INTEGRAL -->
-    <a href="https://wa.me" class="botao">[💬] Fale no WhatsApp</a>
-    
-    <br>
-    <!-- SMARTLINK DO MONETAG CAMUFLADO NO RETÂNGULO LED BRILHANTE -->
-    <a href="https://omg10.com" target="_blank" class="banner-disfarçado">
-        <img src="Screenshot_20260729-113449.jpg" alt="Destaques de Tecnologia" class="anuncio-led-retangular">
-    </a>
+    <!-- LINK DO WHATSAPP TRAVADO E COMPLETAMENTE ORIGINAL -->
+    <a href="https://wa.me/qr/PFCABHMEHPQ6D1" class="botao">[💬] Fale no WhatsApp</a>
 
     <div class="secao-tech">
         <h2>Tecnologia Fascinante</h2>
         <ul class="lista-tech">
-            <li><strong>Inteligência Artificial:</strong> Computadores modernos que conseguem raciocinar, resolver bugs complexos e criar softwares inteiros sozinhos.</li>
+            <li><strong>Inteligência Artificial:</strong> Sistemas computacionais modernos que conseguem raciocinar, resolver bugs complexos e criar softwares inteiros de forma autônoma.</li>
             <li><strong>Computação Quântica:</strong> Supercomputadores revolucionários que usam física quântica para resolver cálculos matemáticos em segundos que levariam milhares de anos.</li>
             <li><strong>Segurança Biométrica:</strong> Algoritmos avançados de criptografia que protegem dados confidenciais usando apenas o padrão de voz ou o escaneamento facial do usuário.</li>
             <li><strong>Internet das Coisas (IoT):</strong> Tecnologia que conecta eletrodomésticos, carros e cidades inteiras à internet, permitindo que os objetos conversem entre si.</li>
@@ -276,6 +240,18 @@
         
         <form action="https://staticforms.xyz" method="post">
             <input type="hidden" name="accessKey" value="f7b1e4b9-8e54-41f4-abe7-eceede3e855a">
+            <input type="hidden" name="redirectTo" value="https://github.io">
+            
             <input type="text" name="name" class="campo-formulario" placeholder="Seu Nome" required>
             <input type="email" name="email" class="campo-formulario" placeholder="Seu E-mail" required>
+            <textarea name="message" class="campo-formulario" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+            
+            <button type="submit" class="botao">Enviar Mensagem</button>
+        </form>
+    </div>
+
+    <a href="#topo" class="botao-topo">▲</a>
+
+</body>
+            </html>
                 
