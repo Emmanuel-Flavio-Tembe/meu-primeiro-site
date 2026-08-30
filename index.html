@@ -7,12 +7,23 @@
         html {
             scroll-behavior: smooth;
         }
+        .barra-topo {
+            width: 100%;
+            background-color: #006eff;
+            color: #ffffff;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 15px 0;
+            margin: -20px 0 25px 0;
+            box-sizing: border-box;
+        }
         body {
             background-color: #000000;
             color: #ffffff;
-            font-family: 'Courier New', Courier, monospace; 
-            text-align: center;
-            padding: 20px 0; 
+            font-family: Arial, Sans-Serif; 
+            text-align: left;
+            padding: 20px; 
             margin: 0;
         }
         h1 {
@@ -21,12 +32,12 @@
             animation: piscar 1.5s infinite;
             font-size: 46px; 
             padding: 0 10px;
+            text-align: left;
         }
         h2 {
             color: #39ff14;
             margin-bottom: 15px;
             font-size: 32px; 
-            /* ALTERADO: Títulos das seções também alinhados à esquerda para combinar */
             text-align: left;
             padding: 0 10px;
         }
@@ -72,11 +83,13 @@
             padding: 0 15px;
         }
         
+        /* Mantido o bloco de anúncios Adsterra / Monetag */
         .banner-disfarçado {
             display: inline-block;
             margin-top: 25px;
             margin-bottom: 25px;
             width: 100%; 
+            text-align: center;
         }
         .anuncio-led-retangular {
             width: 850px; 
@@ -99,30 +112,27 @@
             }
         }
 
-        /* ALTERADO: Ajustado para o texto encostar totalmente no canto esquerdo */
         .secao-tech {
             margin-top: 40px;
-            background-color: #000000; /* Fundo preto puro para mesclar */
-            padding: 25px 10px; /* Reduzido o espaço lateral */
+            background-color: #000000; 
+            padding: 25px 10px; 
             width: 100%;
             max-width: 700px; 
             margin-left: auto;
             margin-right: auto;
-            text-align: left; /* Alinhamento total à esquerda */
+            text-align: left; 
             box-sizing: border-box;
         }
-        /* ALTERADO: Removido os marcadores automáticos para limpar o início da linha */
         .lista-tech {
-            list-style: none; /* Tira as bolinhas/quadrados */
-            padding-left: 0;  /* Tira o recuo da margem */
+            list-style: none; 
+            padding-left: 0;  
             margin: 0;
         }
         .lista-tech li {
-            margin-bottom: 20px !important; /* Espaçamento apenas abaixo da linha completa */
+            margin-bottom: 20px !important; 
             text-align: left;
         }
         
-        /* ALTERADO: Caixa de dicas alinhada totalmente à esquerda e sem recuos */
         .caixa-dica {
             margin-top: 40px;
             background-color: #000000;
@@ -134,59 +144,52 @@
             box-sizing: border-box;
             text-align: left;
         }
-        .caixa-dica p {
-            text-align: left;
-        }
 
         .botao {
             display: inline-block;
             background-color: #39ff14;
             color: #000000;
             padding: 15px 30px;
-            margin: 12px;
+            margin: 12px 0;
             text-decoration: none;
             font-weight: bold;
             border-radius: 8px;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease; 
+            font-family: Arial, Sans-Serif !important;
         }
-        .botao:hover, .botao:active {
+        .botao:active {
             background-color: #ffffff;
             color: #000000;
             transform: scale(1.1);
             box-shadow: 0px 0px 20px #39ff14;
         }
-        .player-musica {
-            margin-top: 25px;
-            margin-bottom: 25px;
-            background-color: #0d0d0d;
-            padding: 15px;
-            border-radius: 30px;
-            border: 2px solid #39ff14;
-            display: inline-block;
-        }
+        
+        /* Botão para voltar ao topo */
         .botao-topo {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background-color: #39ff14;
             color: #000000;
-            width: 55px;
-            height: 55px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             text-decoration: none;
             font-weight: bold;
-            font-size: 26px;
-            line-height: 52px;
-            box-shadow: 0px 0px 12px #39ff14;
+            font-size: 35px;
+            line-height: 60px;
+            box-shadow: 0px 0px 15px #39ff14;
             z-index: 100;
+            text-align: center;
         }
+        
         .secao-contato {
             margin-top: 40px;
             background-color: #0d0d0d;
             padding: 35px 20px; 
-            width: 92%;
+            width: 100%;
             max-width: 700px; 
             margin-left: auto;
             margin-right: auto;
@@ -203,80 +206,90 @@
             background-color: #000000;
             color: #ffffff;
             box-sizing: border-box;
-            font-family: inherit; 
+            font-family: Arial, Sans-Serif !important; 
+            font-size: 24px;
         }
         .campo-formulario::placeholder {
             color: #555555;
+        }
+        textarea.campo-formulario {
+            height: 150px;
+            resize: vertical;
         }
     </style>
 </head>
 <body>
 
+    <!-- Âncora no topo da página -->
     <div id="topo"></div>
-
-    <h1>Olá, Mundo!</h1>
-    <p style="font-size: 24px !important; margin-bottom: 5px !important; text-align: center;">Meu nome é Emmanuel Flávio.</p>
+    
+    <div class="barra-topo">Tecnologia e Informática</div>
+    
+    <p>Olá, meu nome é Emmanuel Flávio.</p>
+    <p>Vem comigo aprender informática e como ganhar dinheiro na internet sem sair de casa!</p>
+    <p style="font-size: 24px !important; margin-bottom: 25px !important; text-align: center;">Meu nome é Emmanuel Flávio.</p>
 
     <div class="container-imagens">
         <div class="bloco-item">
             <img src="Screenshot_20260807-184921.jpg" alt="Imagem 1" class="img-tech-padrao">
-            <p class="legenda-imagem">Esta é a legenda da minha primeira imagem de informática</p>
+            <p class="legenda-imagem"></p>
+        </div>
+        
+        <!-- Bloco de Texto Persuasivo e Organizado -->
+        <div class="anuncio" style="max-width: 700px; margin: 0 auto; padding: 0 10px;">
+            <h2>🔥 Não Perca Esta Oportunidade Única! 🔥</h2>
+
+            <p>
+                Está procurando uma forma <strong>verdadeiramente simples, rápida e prática</strong> 
+                de alcançar a sua independência financeira? Se a resposta for sim... Você está no lugar certo! 🚀
+            </p>
+
+            <p>✅ Método fácil de aplicar;</p>
+            <p>✅ Resultados rápidos e práticos;</p>
+            <p>✅ Suporte exclusivo e de qualidade;</p>
+            <p>✅ Estratégias feitas para facilitar a sua vida digital.</p>
+
+            <p><strong>Chega de perder tempo no celular sem lucrar nada!</strong> Comece hoje mesmo a transformar a sua rotina e descubra tudo o que preparei para você... 💯</p>
+
+            <p>👉 <strong>Role até o final, preencha o formulário e mude de vida!</strong></p>
         </div>
 
+        <!-- SEÇÃO DE ANÚNCIOS (Adsterra e Monetag) -->
+        <div class="banner-disfarçado">
+            <!-- Insira seu código de script ou imagem do Adsterra/Monetag aqui dentro -->
+            <div class="anuncio-led-retangular" style="display: flex; align-items: center; justify-content: center; margin: 0 auto; background: #111;">
+                <p style="font-size: 24px !important; color: #39ff14;">[Espaço do Anúncio Adsterra / Monetag]</p>
+            </div>
+        </div>
+        
         <div class="bloco-item">
             <img src="Screenshot_20260807-184035.jpg" alt="Imagem 2" class="img-tech-padrao">
-            <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela</p>
+            <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela.</p>
         </div>
         
         <div class="bloco-item">
             <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="img-tech-padrao">
-            <p class="legenda-imagem">Esta é a legenda da minha terceira imagem</p>
+            <p class="legenda-imagem">Esta é a legenda da minha terceira imagem.</p>
         </div>
     </div>
-    
-    <div class="player-musica">
-        <audio controls>
-            <source src="musica.mp3" type="audio/mpeg">
-            Seu navegador não suporta o tocador de áudio.
-        </audio>
-    </div>
-    
-    <br>
-    <a href="https://github.com" target="_blank" class="botao">[⚙️] Meu GitHub</a>
-    
-    <!-- MANTIDO TRAVADO: O seu link de QR code real do WhatsApp -->
-    <a href="https://wa.me" class="botao">[💬] Fale no WhatsApp</a>
-    
-    <br>
-    <a href="https://omg10.com" target="_blank" class="banner-disfarçado">
-        <img src="Screenshot_20260729-113449.jpg" alt="Destaques de Tecnologia" class="anuncio-led-retangular">
-    </a>
-<script async="async" data-cfasync="false" src="https://industriousslowly.com/358e667bfa2436f285369f84222f7e01/invoke.js"></script>
-<div id="container-358e667bfa2436f285369f84222f7e01"></div>
-    
-    <!-- ALTERADO: Textos formatados em linhas contínuas coladas à esquerda e terminando em ponto -->
-    <div class="secao-tech">
-        <h2>Tecnologia Fascinante</h2>
-        <ul class="lista-tech">
-            <li>Inteligência Artificial são computadores modernos que conseguem raciocinar, resolver bugs complexos e criar softwares inteiros sozinhos.</li>
-            <li>Computação Quântica são supercomputadores revolucionários que usam física quântica para resolver cálculos matemáticos em segundos que levariam milhares de anos.</li>
-            <li>Segurança Biométrica são algoritmos avançados de criptografia que protegem dados confidenciais usando apenas o padrão de voz ou o escaneamento facial do usuário.</li>
-            <li>Internet das Coisas é a tecnologia que conecta eletrodomésticos, carros e cidades inteiras à internet, permitindo que os objetos conversem entre si.</li>
-            <li>Realidade Virtual é a criação de ambientes e mundos digitais em 3D totalmente imersivos, simulando experiências do mundo real através de óculos especiais.</li>
-            <li>Blockchain é o sistema de blocos criptografados super seguro que permite transações financeiras e registros de dados sem a necessidade de um banco central intermediário.</li>
-        </ul>
-    </div>
 
-    <!-- ALTERADO: Dica de informática alinhada à esquerda em formato de mensagem contínua -->
-    <div class="caixa-dica">
-        <h2>💡 Dica de Informática</h2>
-        <p>Atalho de Mestre é quando você fecha uma aba sem querer no seu navegador do computador, pressione Ctrl + Shift + T juntas e a aba fechada abre novamente na mesma hora.</p>
-    </div>
-
-    <br>
-    <!-- O SEU CÓDIGO DE BANDEIRA NATIVA DO ADSTERRA CONTINUA RESERVADO AQUI ABAIXO -->
-
+    <!-- Novo Formulário de Mensagem -->
     <div class="secao-contato">
-        <h2>Envie uma Mensagem</h2>
+        <h2>📩 Envie uma Mensagem Diretamente para Mim!</h2>
+        <p style="font-size: 24px !important; margin-bottom: 15px !important; color: #aaaaaa;">
+            Tem dúvidas? Quer saber como começar? Preencha os campos abaixo; eu responderei o mais rápido possível!
+        </p>
         
-        <form action="https://staticforms.xyz" method="post">
+        <form action="https://formspree.io" method="POST">
+            <input type="text" name="nome" class="campo-formulario" placeholder="Seu Nome Completo" required>
+            <input type="email" name="email" class="campo-formulario" placeholder="Seu Melhor E-mail" required>
+            <textarea name="mensagem" class="campo-formulario" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            <button type="submit" class="botao">Enviar Mensagem 🚀</button>
+        </form>
+    </div>
+
+    <!-- Botão de Voltar para Cima -->
+    <a href="#topo" class="botao-topo" title="Voltar ao Topo">↑</a>
+
+</body>
+</html>
