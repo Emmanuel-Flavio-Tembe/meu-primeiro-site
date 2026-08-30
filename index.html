@@ -83,7 +83,7 @@
             padding: 0 15px;
         }
         
-        /* Mantido o bloco de anúncios Adsterra / Monetag */
+        /* Ad Container Wrapper */
         .banner-disfarçado {
             display: inline-block;
             margin-top: 25px;
@@ -91,15 +91,18 @@
             width: 100%; 
             text-align: center;
         }
+        /* Neon LED container for your script code */
         .anuncio-led-retangular {
             width: 850px; 
-            height: 1000px; 
+            min-height: 250px; 
             max-width: 95%; 
             border-radius: 12px; 
-            object-fit: cover;
             box-sizing: border-box;
             border: 5px solid #39ff14;
             animation: efeitoLed 1.2s infinite alternate ease-in-out;
+            margin: 0 auto;
+            background-color: #000000;
+            padding: 10px;
         }
         @keyframes efeitoLed {
             0% {
@@ -166,7 +169,7 @@
             box-shadow: 0px 0px 20px #39ff14;
         }
         
-        /* Botão para voltar ao topo */
+        /* Floating Button back-to-top */
         .botao-topo {
             position: fixed;
             bottom: 20px;
@@ -220,7 +223,7 @@
 </head>
 <body>
 
-    <!-- Âncora no topo da página -->
+    <!-- Target anchor top of the page -->
     <div id="topo"></div>
     
     <div class="barra-topo">Tecnologia e Informática</div>
@@ -235,7 +238,7 @@
             <p class="legenda-imagem"></p>
         </div>
         
-        <!-- Bloco de Texto Persuasivo e Organizado -->
+        <!-- Persuasive description section -->
         <div class="anuncio" style="max-width: 700px; margin: 0 auto; padding: 0 10px;">
             <h2>🔥 Não Perca Esta Oportunidade Única! 🔥</h2>
 
@@ -254,11 +257,12 @@
             <p>👉 <strong>Role até o final, preencha o formulário e mude de vida!</strong></p>
         </div>
 
-        <!-- SEÇÃO DE ANÚNCIOS (Adsterra e Monetag) -->
+        <!-- ACTIVE AD ADSTERRA / MONETAG SECTION -->
         <div class="banner-disfarçado">
-            <!-- Insira seu código de script ou imagem do Adsterra/Monetag aqui dentro -->
-            <div class="anuncio-led-retangular" style="display: flex; align-items: center; justify-content: center; margin: 0 auto; background: #111;">
-                <p style="font-size: 24px !important; color: #39ff14;">[Espaço do Anúncio Adsterra / Monetag]</p>
+            <div class="anuncio-led-retangular">
+                <!-- Your Adsterra Ad Unit Code [358e667bfa2436f285369f84222f7e01] -->
+                <script async="async" data-cfasync="false" src="https://industriousslowly.com/358e667bfa2436f285369f84222f7e01/invoke.js"></script>
+                <div id="container-358e667bfa2436f285369f84222f7e01"></div>
             </div>
         </div>
         
@@ -273,7 +277,7 @@
         </div>
     </div>
 
-    <!-- Novo Formulário de Mensagem -->
+    <!-- Message submission form setup -->
     <div class="secao-contato">
         <h2>📩 Envie uma Mensagem Diretamente para Mim!</h2>
         <p style="font-size: 24px !important; margin-bottom: 15px !important; color: #aaaaaa;">
@@ -288,8 +292,9 @@
         </form>
     </div>
 
-    <!-- Botão de Voltar para Cima -->
+    <!-- Back to top action arrow anchor link -->
     <a href="#topo" class="botao-topo" title="Voltar ao Topo">↑</a>
 
 </body>
-</html>
+    </html>
+    
