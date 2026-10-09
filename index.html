@@ -1,300 +1,376 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Primeiro Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechDownloads - Download Seguro de Software</title>
+    <!-- Tipografia Clean (Inter) -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Variáveis de Design - Tema Escuro Premium */
+        :root {
+            --bg-principal: #0b0f19;
+            --bg-card: #151b2c;
+            --bg-input: #1e2640;
+            --cor-destaque: #39ff14; /* Verde Neon */
+            --cor-texto: #f3f4f6;
+            --cor-mutado: #9ca3af;
+            --borda-suave: #222d4a;
+        }
+
         html {
             scroll-behavior: smooth;
         }
-        .barra-topo {
-            width: 100%;
-            background-color: #006eff;
-            color: #ffffff;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            padding: 15px 0;
-            margin: -20px 0 25px 0;
-            box-sizing: border-box;
-        }
+
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: Arial, Sans-Serif; 
-            text-align: left;
-            padding: 20px; 
+            background-color: var(--bg-principal);
+            color: var(--cor-texto);
+            font-family: 'Inter', sans-serif;
             margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
-        h1 {
-            color: #39ff14;
-            text-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
-            animation: piscar 1.5s infinite;
-            font-size: 46px; 
-            padding: 0 10px;
-            text-align: left;
-        }
-        h2 {
-            color: #39ff14;
-            margin-bottom: 15px;
-            font-size: 32px; 
-            text-align: left;
-            padding: 0 10px;
-        }
-        @keyframes piscar {
-            0%, 100% { opacity: 1; text-shadow: 0 0 25px #39ff14; }
-            50% { opacity: 0.3; text-shadow: 0 0 5px #39ff14; }
-        }
-        
-        p, li, span, select, button {
-            font-size: 50px !important;
-            line-height: 1.1 !important; 
-            margin: 0 !important;        
-        }
-        
-        .container-imagens {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-        .bloco-item {
-            width: 100%;
-            text-align: center;
-        }
-        .img-tech-padrao {
-            width: 100vw; 
-            height: auto;
-            border-top: 4px solid #39ff14;
-            border-bottom: 4px solid #39ff14;
-            border-left: none;
-            border-right: none;
-            box-sizing: border-box;
-            display: block;
-        }
-        .legenda-imagem {
-            margin-top: 5px;
-            color: #39ff14;
-            font-weight: bold;
-            padding: 0 15px;
-        }
-        
-        /* Ad Container Wrapper */
-        .banner-disfarçado {
-            display: inline-block;
-            margin-top: 25px;
-            margin-bottom: 25px;
-            width: 100%; 
-            text-align: center;
-        }
-        /* Neon LED container for your script code */
-        .anuncio-led-retangular {
-            width: 850px; 
-            min-height: 250px; 
-            max-width: 95%; 
-            border-radius: 12px; 
-            box-sizing: border-box;
-            border: 5px solid #39ff14;
-            animation: efeitoLed 1.2s infinite alternate ease-in-out;
+
+        /* Espaçamento em Branco Global (White Space) */
+        .secao {
+            padding: 60px 20px;
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: #000000;
-            padding: 10px;
-        }
-        @keyframes efeitoLed {
-            0% {
-                box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
-                filter: brightness(0.9);
-            }
-            100% {
-                box-shadow: 0 0 30px #39ff14, 0 0 55px #39ff14;
-                filter: brightness(1.3);
-            }
         }
 
-        .secao-tech {
-            margin-top: 40px;
-            background-color: #000000; 
-            padding: 25px 10px; 
-            width: 100%;
-            max-width: 700px; 
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left; 
-            box-sizing: border-box;
-        }
-        .lista-tech {
-            list-style: none; 
-            padding-left: 0;  
-            margin: 0;
-        }
-        .lista-tech li {
-            margin-bottom: 20px !important; 
-            text-align: left;
-        }
-        
-        .caixa-dica {
-            margin-top: 40px;
-            background-color: #000000;
-            padding: 20px 10px;
-            width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            box-sizing: border-box;
-            text-align: left;
+        /* Cabeçalho / Navegação */
+        header {
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--borda-suave);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .botao {
-            display: inline-block;
-            background-color: #39ff14;
-            color: #000000;
-            padding: 15px 30px;
-            margin: 12px 0;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
             text-decoration: none;
-            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--cor-destaque);
+        }
+
+        .nav-links a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* Filtros e Pesquisa */
+        .area-pesquisa {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda-suave);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .input-filtro {
+            background-color: var(--bg-input);
+            border: 1px solid var(--borda-suave);
+            color: #fff;
+            padding: 12px 18px;
             border-radius: 8px;
+            font-size: 14px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .select-filtro {
+            background-color: var(--bg-input);
+            border: 1px solid var(--borda-suave);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Títulos */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 span {
+            color: var(--cor-destaque);
+        }
+
+        /* Grelha de Cartões (Grid) */
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card-download {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda-suave);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card-download:hover {
+            transform: translateY(-4px);
+            border-color: var(--cor-destaque);
+        }
+
+        .capa-card {
+            width: 100%;
+            height: 180px;
+            background-color: #1e2640;
+            object-fit: cover;
+        }
+
+        .conteudo-card {
+            padding: 20px;
+        }
+
+        .categoria-tag {
+            color: var(--cor-destaque);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .titulo-card {
+            font-size: 20px;
+            margin: 8px 0 15px 0;
+            font-weight: 600;
+        }
+
+        /* Selo Verificado & Segurança (Anti-Burla) */
+        .selo-verificado {
+            background-color: rgba(57, 255, 20, 0.06);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .selo-icone {
+            color: var(--cor-destaque);
+            font-weight: bold;
+        }
+
+        .link-relatorio {
+            color: var(--cor-destaque);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        /* Detalhes Técnicos */
+        .dados-tecnicos {
+            font-size: 13px;
+            color: var(--cor-mutado);
+            border-top: 1px solid var(--borda-suave);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .hash-code {
+            font-family: monospace;
+            background-color: var(--bg-input);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+            margin-top: 5px;
+            word-break: break-all;
+        }
+
+        /* Botão de Download Direto */
+        .btn-download {
+            display: block;
+            width: 100%;
+            background-color: var(--cor-destaque);
+            color: #000;
+            text-align: center;
+            padding: 14px 0;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: opacity 0.2s;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease; 
-            font-family: Arial, Sans-Serif !important;
         }
-        .botao:active {
-            background-color: #ffffff;
-            color: #000000;
-            transform: scale(1.1);
-            box-shadow: 0px 0px 20px #39ff14;
+
+        .btn-download:hover {
+            opacity: 0.9;
         }
-        
-        /* Floating Button back-to-top */
-        .botao-topo {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #39ff14;
-            color: #000000;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 35px;
-            line-height: 60px;
-            box-shadow: 0px 0px 15px #39ff14;
-            z-index: 100;
-            text-align: center;
-        }
-        
-        .secao-contato {
+
+        /* Seção de Mídia (Trailer & Screenshots) */
+        .container-media {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
             margin-top: 40px;
-            background-color: #0d0d0d;
-            padding: 35px 20px; 
-            width: 100%;
-            max-width: 700px; 
-            margin-left: auto;
-            margin-right: auto;
-            border: 4px solid #39ff14;
-            box-sizing: border-box;
-            border-radius: 16px;
         }
-        .campo-formulario {
+
+        .trailer-box iframe {
             width: 100%;
-            padding: 18px;
-            margin: 15px 0;
+            height: 350px;
+            border-radius: 12px;
+            border: 1px solid var(--borda-suave);
+        }
+
+        .screenshots-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .screenshot-img {
+            width: 100%;
+            height: 110px;
+            background-color: #1e2640;
             border-radius: 8px;
-            border: 1px solid #39ff14;
-            background-color: #000000;
-            color: #ffffff;
-            box-sizing: border-box;
-            font-family: Arial, Sans-Serif !important; 
-            font-size: 24px;
+            object-fit: cover;
         }
-        .campo-formulario::placeholder {
-            color: #555555;
+
+        /* Avaliações / Comentários Reais */
+        .secao-comentarios {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda-suave);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
         }
-        textarea.campo-formulario {
-            height: 150px;
-            resize: vertical;
+
+        .comentario {
+            border-bottom: 1px solid var(--borda-suave);
+            padding: 20px 0;
+        }
+
+        .comentario:last-child {
+            border-bottom: none;
+        }
+
+        .autor-comentario {
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .estrelas {
+            color: gold;
+        }
+
+        .texto-comentario {
+            color: var(--cor-mutado);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Rodapé Legal e Páginas Institucionais */
+        footer {
+            background-color: #060910;
+            border-top: 1px solid var(--borda-suave);
+            padding: 60px 20px;
+            margin-top: 100px;
+            font-size: 14px;
+            color: var(--cor-mutado);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer-col a {
+            color: var(--cor-mutado);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* Modal/Passos Simplificados de Download */
+        .passos-instalacao {
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--cor-destaque);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container-media { grid-template-columns: 1fr; }
+            .area-pesquisa { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Target anchor top of the page -->
-    <div id="topo"></div>
-    
-    <div class="barra-topo">Tecnologia e Informática</div>
-    
-    <p>Olá, meu nome é Emmanuel Flávio.</p>
-    <p>Vem comigo aprender informática e como ganhar dinheiro na internet sem sair de casa!</p>
-    <p style="font-size: 24px !important; margin-bottom: 25px !important; text-align: center;">Meu nome é Emmanuel Flávio.</p>
-
-    <div class="container-imagens">
-        <div class="bloco-item">
-            <img src="Screenshot_20260807-184921.jpg" alt="Imagem 1" class="img-tech-padrao">
-            <p class="legenda-imagem"></p>
+    <!-- Navegação Superior -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Tech<span>Downloads</span></a>
+            <nav class="nav-links">
+                <a href="#novos">Novos</a>
+                <a href="#populares">Mais Descarregados</a>
+                <a href="#como-instalar">Como Instalar</a>
+                <a href="#sobre">Sobre Nós</a>
+            </nav>
         </div>
-        
-        <!-- Persuasive description section -->
-        <div class="anuncio" style="max-width: 700px; margin: 0 auto; padding: 0 10px;">
-            <h2>🔥 Não Perca Esta Oportunidade Única! 🔥</h2>
+    </header>
 
-            <p>
-                Está procurando uma forma <strong>verdadeiramente simples, rápida e prática</strong> 
-                de alcançar a sua independência financeira? Se a resposta for sim... Você está no lugar certo! 🚀
-            </p>
+    <main class="secao">
 
-            <p>✅ Método fácil de aplicar;</p>
-            <p>✅ Resultados rápidos e práticos;</p>
-            <p>✅ Suporte exclusivo e de qualidade;</p>
-            <p>✅ Estratégias feitas para facilitar a sua vida digital.</p>
-
-            <p><strong>Chega de perder tempo no celular sem lucrar nada!</strong> Comece hoje mesmo a transformar a sua rotina e descubra tudo o que preparei para você... 💯</p>
-
-            <p>👉 <strong>Role até o final, preencha o formulário e mude de vida!</strong></p>
-        </div>
-
-        <!-- ACTIVE AD ADSTERRA / MONETAG SECTION -->
-        <div class="banner-disfarçado">
-            <div class="anuncio-led-retangular">
-                <!-- Your Adsterra Ad Unit Code [358e667bfa2436f285369f84222f7e01] -->
-                <script async="async" data-cfasync="false" src="https://industriousslowly.com/358e667bfa2436f285369f84222f7e01/invoke.js"></script>
-                <div id="container-358e667bfa2436f285369f84222f7e01"></div>
-            </div>
-        </div>
-        
-        <div class="bloco-item">
-            <img src="Screenshot_20260807-184035.jpg" alt="Imagem 2" class="img-tech-padrao">
-            <p class="legenda-imagem">Esta é a legenda do meu segundo print de tela.</p>
-        </div>
-        
-        <div class="bloco-item">
-            <img src="Screenshot_20260729-113449.jpg" alt="imagem 3" class="img-tech-padrao">
-            <p class="legenda-imagem">Esta é a legenda da minha terceira imagem.</p>
-        </div>
-    </div>
-
-    <!-- Message submission form setup -->
-    <div class="secao-contato">
-        <h2>📩 Envie uma Mensagem Diretamente para Mim!</h2>
-        <p style="font-size: 24px !important; margin-bottom: 15px !important; color: #aaaaaa;">
-            Tem dúvidas? Quer saber como começar? Preencha os campos abaixo; eu responderei o mais rápido possível!
-        </p>
-        
-        <form action="https://formspree.io" method="POST">
-            <input type="text" name="nome" class="campo-formulario" placeholder="Seu Nome Completo" required>
-            <input type="email" name="email" class="campo-formulario" placeholder="Seu Melhor E-mail" required>
-            <textarea name="mensagem" class="campo-formulario" placeholder="Escreva sua mensagem aqui..." required></textarea>
-            <button type="submit" class="botao">Enviar Mensagem 🚀</button>
-        </form>
-    </div>
-
-    <!-- Back to top action arrow anchor link -->
-    <a href="#topo" class="botao-topo" title="Voltar ao Topo">↑</a>
-
-</body>
-    </html>
+        <!-- Pesquisa Avançada com Filtros (Sem anúncios enganadores) -->
+        <div class="area-pesquisa">
     
