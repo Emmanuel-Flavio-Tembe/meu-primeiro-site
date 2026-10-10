@@ -1,517 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080c14">
-  <meta name="description" content="Descobre jogos, consulta informações e encontra ligações para fontes oficiais de download no GigaGames.">
-  <title>GigaGames — Jogos e Downloads</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-body: #080c14;
-      --bg-surface: #0f1626;
-      --bg-input: #172036;
-      --accent: #39ff14;
-      --accent-dim: rgba(57,255,20,.10);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --border: #1e293b;
-      --max-width: 1200px;
-      color-scheme: dark;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg-body);
-      color: var(--text-main);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    button, input, select { font: inherit; }
-    button, a, select { -webkit-tap-highlight-color: transparent; }
-    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-    .container { width: min(100% - 32px, var(--max-width)); margin-inline: auto; }
-    .hidden { display: none !important; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(8,12,20,.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .header-wrap {
-      width: min(100% - 32px, var(--max-width));
-      min-height: 76px;
-      margin-inline: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand {
-      color: #fff;
-      text-decoration: none;
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -.8px;
-      white-space: nowrap;
-    }
-    .brand span { color: var(--accent); }
-    nav { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
-    nav a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    nav a:hover, nav a.active { color: var(--accent); }
-
-    .hero { padding: 64px 0 34px; }
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-    }
-    .hero h1 {
-      max-width: 780px;
-      margin: 14px 0;
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero p { max-width: 660px; color: var(--text-muted); margin: 0; }
-
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 18px;
-      margin: 22px 0 26px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-    .search-input, .filter-select {
-      min-width: 0;
-      padding: 13px 15px;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      background: var(--bg-input);
-      color: #fff;
-    }
-    .search-input { flex: 2 1 260px; }
-    .filter-select { flex: 1 1 170px; cursor: pointer; }
-    .search-input::placeholder { color: #8792a5; }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin: 30px 0 16px;
-    }
-    .section-head h2 { margin: 0; font-size: 24px; letter-spacing: -.6px; }
-    .section-head p { margin: 4px 0 0; color: var(--text-muted); font-size: 13px; }
-    .result-count { color: var(--text-muted); font-size: 13px; }
-
-    .curated-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
-    .curated-badge {
-      padding: 9px 15px;
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      background: var(--bg-surface);
-      color: var(--text-main);
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .curated-badge:hover, .curated-badge.active {
-      border-color: var(--accent);
-      background: var(--accent-dim);
-      color: var(--accent);
-    }
-
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr));
-      gap: 22px;
-      padding-bottom: 48px;
-    }
-    .game-card {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      transition: transform .2s ease, border-color .2s ease;
-    }
-    .game-card:hover { transform: translateY(-3px); border-color: var(--accent); }
-    .card-thumb {
-      display: block;
-      width: 100%;
-      height: 185px;
-      object-fit: cover;
-      background: var(--bg-input);
-    }
-    .placeholder-art {
-      height: 185px;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      text-align: center;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(57,255,20,.15), transparent 35%),
-        linear-gradient(135deg, #172036, #0a101c);
-      color: var(--accent);
-      font-size: 34px;
-      font-weight: 800;
-    }
-    .placeholder-art small { display: block; color: var(--text-muted); font-size: 11px; font-weight: 500; }
-    .card-body { display: flex; flex: 1; flex-direction: column; padding: 20px; }
-    .card-tag {
-      margin-bottom: 7px;
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
-    }
-    .card-title { margin: 0 0 8px; color: #fff; font-size: 19px; line-height: 1.35; }
-    .card-description { margin: 0 0 16px; color: var(--text-muted); font-size: 13px; }
-    .card-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 18px; color: var(--text-muted); font-size: 12px; }
-    .card-actions { display: flex; gap: 10px; margin-top: auto; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 42px;
-      padding: 10px 14px;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: opacity .2s, border-color .2s, background .2s;
-    }
-    .btn-primary { flex: 1; background: var(--accent); color: #071006; }
-    .btn-secondary { background: var(--bg-input); border-color: var(--border); color: var(--text-main); }
-    .btn:hover { opacity: .88; }
-    .empty-state {
-      grid-column: 1 / -1;
-      padding: 36px 20px;
-      border: 1px dashed var(--border);
-      border-radius: 14px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    .detail-panel {
-      margin: 22px 0 50px;
-      padding: clamp(18px, 4vw, 34px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--bg-surface);
-    }
-    .back-btn { margin-bottom: 20px; }
-    .inner-game-title { margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -1px; }
-    .detail-description { color: var(--text-muted); }
-    .security-badge {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin: 22px 0;
-      padding: 16px;
-      border: 1px solid rgba(57,255,20,.25);
-      border-radius: 10px;
-      background: rgba(57,255,20,.04);
-    }
-    .security-icon {
-      display: grid;
-      flex: 0 0 25px;
-      width: 25px;
-      height: 25px;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #071006;
-      font-weight: 900;
-    }
-    .security-text { font-size: 13px; }
-    .security-text strong { color: var(--accent); }
-    .game-details-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 22px; margin-top: 24px; }
-    .detail-box { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: #0b1220; }
-    .detail-box h3 { margin: 0 0 12px; font-size: 17px; }
-    .tech-row { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-    .tech-row:last-child { border-bottom: 0; }
-    .tech-label { color: var(--text-muted); }
-    .tech-value { text-align: right; overflow-wrap: anywhere; }
-    .download-zone { margin-top: 24px; padding: 24px; border: 1px solid var(--border); border-radius: 12px; text-align: center; }
-    .download-zone p { color: var(--text-muted); font-size: 13px; }
-    .download-zone .btn { min-width: 200px; }
-    .notice { color: var(--text-muted); font-size: 12px; }
-    footer { margin-top: 24px; border-top: 1px solid var(--border); }
-    .footer-inner { display: flex; justify-content: space-between; gap: 18px; padding: 26px 0; color: var(--text-muted); font-size: 12px; }
-    .footer-inner p { margin: 0; }
-
-    @media (max-width: 760px) {
-      .header-wrap { align-items: flex-start; flex-direction: column; justify-content: center; padding: 15px 0; gap: 12px; }
-      nav { gap: 15px; }
-      .hero { padding-top: 42px; }
-      .hero h1 { letter-spacing: -1px; }
-      .game-details-layout { grid-template-columns: 1fr; }
-      .section-head { align-items: flex-start; flex-direction: column; }
-      .footer-inner { flex-direction: column; }
-    }
-    @media (max-width: 420px) {
-      .container, .header-wrap { width: min(100% - 24px, var(--max-width)); }
-      .games-grid { grid-template-columns: minmax(0, 1fr); }
-      .card-actions { flex-direction: column; }
-      .card-actions .btn { width: 100%; }
-      .tech-row { flex-direction: column; gap: 3px; }
-      .tech-value { text-align: left; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080c14">
+<meta name="description" content="Descobre jogos, consulta informações e encontra fontes oficiais no GigaGames."><title>GigaGames — Jogos e Downloads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c14;--surface:#0f1626;--input:#172036;--accent:#39ff14;--dim:rgba(57,255,20,.1);--text:#f3f4f6;--muted:#9ca3af;--border:#1e293b;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif}a{color:inherit}button,input,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.container{width:min(100% - 32px,1200px);margin:auto}.hidden{display:none!important}
+header{position:sticky;top:0;z-index:20;background:rgba(8,12,20,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}.header-wrap{width:min(100% - 32px,1200px);min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:23px;font-weight:800;text-decoration:none;white-space:nowrap}.brand span,.eyebrow,.card-tag{color:var(--accent)}nav{display:flex;flex-wrap:wrap;gap:16px}nav a{text-decoration:none;font-size:14px;font-weight:600}nav a:hover{color:var(--accent)}
+.hero{padding:64px 0 34px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.hero h1{max-width:780px;margin:14px 0;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-2px}.hero h1 span{color:var(--accent)}.hero p,.section-head p,.card-description,.detail-description{color:var(--muted)}
+.filter-bar{display:flex;flex-wrap:wrap;gap:12px;padding:18px;margin:22px 0 26px;background:var(--surface);border:1px solid var(--border);border-radius:14px}.search-input,.filter-select{min-width:0;padding:13px 15px;border:1px solid var(--border);border-radius:9px;background:var(--input);color:white}.search-input{flex:2 1 260px}.filter-select{flex:1 1 170px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:30px 0 16px}.section-head h2{margin:0;font-size:24px}.section-head p{margin:4px 0;font-size:13px}.result-count{color:var(--muted);font-size:13px}
+.curated-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}.curated-badge{padding:9px 15px;border:1px solid var(--border);border-radius:30px;background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;font-weight:600}.curated-badge.active,.curated-badge:hover{border-color:var(--accent);background:var(--dim);color:var(--accent)}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,285px),1fr));gap:22px;padding-bottom:30px}.game-card{display:flex;min-width:0;flex-direction:column;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:15px;transition:.2s}.game-card:hover{transform:translateY(-3px);border-color:var(--accent)}.card-thumb,.placeholder-art{width:100%;height:185px;object-fit:cover;background:var(--input)}.placeholder-art{display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 80% 20%,rgba(57,255,20,.15),transparent 35%),linear-gradient(135deg,#172036,#0a101c);color:var(--accent);font-size:34px;font-weight:800}.placeholder-art small{display:block;color:var(--muted);font-size:11px}.card-body{display:flex;flex:1;flex-direction:column;padding:20px}.card-tag{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.card-title{margin:7px 0;color:white;font-size:19px}.card-description{margin:0 0 12px;font-size:13px}.card-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-bottom:12px;color:var(--muted);font-size:12px}.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 14px;border:1px solid transparent;border-radius:8px;text-decoration:none;font-size:13px;font-weight:800;cursor:pointer}.btn-primary{flex:1;background:var(--accent);color:#071006}.btn-secondary{background:var(--input);border-color:var(--border);color:var(--text)}.favorite-btn{min-width:42px;border:1px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:20px;cursor:pointer}.favorite-btn.is-favorite{color:#ff6584;border-color:#ff6584}.rating{display:flex;align-items:center;gap:3px;margin:0 0 14px}.star-btn{padding:0 2px;border:0;background:transparent;color:#64748b;font-size:20px;cursor:pointer}.star-btn.selected,.star-btn:hover{color:#ffd166}.rating-label{margin-left:5px;color:var(--muted);font-size:11px}.empty-state{grid-column:1/-1;padding:32px 20px;border:1px dashed var(--border);border-radius:14px;color:var(--muted);text-align:center}
+.detail-panel{margin:22px 0 50px;padding:clamp(18px,4vw,34px);border:1px solid var(--border);border-radius:16px;background:var(--surface)}.inner-game-title{font-size:clamp(28px,4vw,40px);line-height:1.15}.security-badge{display:flex;gap:12px;margin:22px 0;padding:16px;border:1px solid rgba(57,255,20,.25);border-radius:10px;background:rgba(57,255,20,.04);font-size:13px}.security-icon{display:grid;flex:0 0 25px;width:25px;height:25px;place-items:center;border-radius:50%;background:var(--accent);color:#071006;font-weight:900}.game-details-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-top:24px}.detail-box,.news-card{min-width:0;padding:20px;border:1px solid var(--border);border-radius:12px;background:#0b1220}.detail-box h3{margin-top:0}.tech-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--border);font-size:13px}.tech-label,.notice{color:var(--muted)}.tech-value{text-align:right;overflow-wrap:anywhere}.download-zone{margin-top:24px;padding:24px;border:1px solid var(--border);border-radius:12px;text-align:center}.download-zone p{color:var(--muted);font-size:13px}.content-section{margin:38px 0}.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}.news-card{background:var(--surface)}.news-card h3{margin:8px 0}.news-card p{margin:0;color:var(--muted);font-size:13px}footer{margin-top:24px;border-top:1px solid var(--border)}.footer-inner{display:flex;justify-content:space-between;gap:18px;padding:26px 0;color:var(--muted);font-size:12px}.footer-inner p{margin:0}
+@media(max-width:760px){.header-wrap{align-items:flex-start;flex-direction:column;justify-content:center;padding:15px 0;gap:12px}nav{gap:12px}.hero{padding-top:42px}.game-details-layout{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.footer-inner{flex-direction:column}}
+@media(max-width:420px){.container,.header-wrap{width:min(100% - 24px,1200px)}.games-grid{grid-template-columns:1fr}.tech-row{flex-direction:column;gap:3px}.tech-value{text-align:left}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="header-wrap">
-      <a class="brand" href="#" id="homeLink" aria-label="GigaGames - página inicial">Giga<span>Games</span></a>
-      <nav aria-label="Navegação principal">
-        <a href="#inicio" class="active" id="navHome">Início</a>
-        <a href="#catalogo" id="navCatalog">Catálogo</a>
-        <a href="#sobre" id="navAbout">Sobre</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero" id="inicio">
-      <span class="eyebrow">● O teu próximo jogo começa aqui</span>
-      <h1>Encontra o teu próximo <span>jogo favorito.</span></h1>
-      <p>Explora o catálogo, consulta os requisitos e segue para fontes oficiais ou autorizadas. Confirma sempre os detalhes antes de instalar qualquer ficheiro.</p>
-    </section>
-
-    <section id="catalogo" aria-labelledby="catalogTitle">
-      <div class="filter-bar" role="search">
-        <input class="search-input" id="searchInput" type="search" placeholder="Pesquisar por nome de jogo..." aria-label="Pesquisar jogos">
-        <select class="filter-select" id="categoryFilter" aria-label="Filtrar por categoria">
-          <option value="all">Todas as categorias</option>
-          <option value="Ação">Ação</option>
-          <option value="Corrida">Corrida</option>
-          <option value="Aventura">Aventura</option>
-          <option value="Estratégia">Estratégia</option>
-        </select>
-        <select class="filter-select" id="platformFilter" aria-label="Filtrar por plataforma">
-          <option value="all">Todas as plataformas</option>
-          <option value="Android">Android</option>
-          <option value="PC">PC</option>
-          <option value="Web">Web</option>
-        </select>
-      </div>
-
-      <div class="section-head">
-        <div>
-          <h2 id="catalogTitle">Catálogo de jogos</h2>
-          <p>Exemplos demonstrativos — edita os dados no JavaScript para adicionar os teus jogos.</p>
-        </div>
-        <span class="result-count" id="resultCount" aria-live="polite"></span>
-      </div>
-
-      <div class="curated-row" aria-label="Filtros rápidos">
-        <button type="button" class="curated-badge active" data-quick="all">Todos</button>
-        <button type="button" class="curated-badge" data-quick="Android">Android</button>
-        <button type="button" class="curated-badge" data-quick="PC">PC</button>
-        <button type="button" class="curated-badge" data-quick="Corrida">Corrida</button>
-        <button type="button" class="curated-badge" data-quick="Ação">Ação</button>
-      </div>
-
-      <div class="games-grid" id="gamesGrid"></div>
-    </section>
-
-    <section class="detail-panel hidden" id="gameDetails" aria-labelledby="detailTitle">
-      <button class="btn btn-secondary back-btn" id="backButton" type="button">← Voltar ao catálogo</button>
-      <div id="detailContent"></div>
-    </section>
-
-    <section id="sobre" class="detail-box" style="margin-bottom:42px">
-      <h2 style="margin-top:0">Sobre o GigaGames</h2>
-      <p class="detail-description">O GigaGames é um catálogo demonstrativo para organizar informações sobre jogos. Substitui os exemplos por jogos reais e usa links oficiais, páginas dos criadores ou lojas autorizadas. Não alojamos nem verificamos automaticamente ficheiros de terceiros.</p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> GigaGames. Todos os direitos dos jogos pertencem aos respetivos titulares.</p>
-      <p>Confirma a origem e os requisitos dos ficheiros antes de instalar.</p>
-    </div>
-  </footer>
-
-  <script>
-    "use strict";
-
-    // EXEMPLOS: troca estes registos pelos dados reais dos teus jogos.
-    // Usa URLs oficiais/autorizados. "downloadUrl" vazio desativa o botão de download.
-    const games = [
-      {
-        id: "racer-demo",
-        title: "Racing Adventure",
-        category: "Corrida",
-        platform: "Android",
-        size: "A confirmar",
-        version: "A confirmar",
-        developer: "A preencher",
-        description: "Exemplo de cartão para um jogo de corrida. Substitui esta descrição por informação verificada.",
-        requirements: "Consulta a página oficial do jogo.",
-        sourceUrl: "https://play.google.com/store",
-        downloadUrl: "",
-        featured: true
-      },
-      {
-        id: "action-demo",
-        title: "Action Arena",
-        category: "Ação",
-        platform: "PC",
-        size: "A confirmar",
-        version: "A confirmar",
-        developer: "A preencher",
-        description: "Exemplo de jogo de ação. Adiciona aqui uma descrição curta, clara e verdadeira.",
-        requirements: "Consulta os requisitos oficiais do jogo.",
-        sourceUrl: "https://store.steampowered.com/",
-        downloadUrl: "",
-        featured: true
-      },
-      {
-        id: "adventure-demo",
-        title: "Mystic Quest",
-        category: "Aventura",
-        platform: "Web",
-        size: "Não aplicável",
-        version: "A confirmar",
-        developer: "A preencher",
-        description: "Exemplo de jogo de aventura. Atualiza os dados e a fonte antes de publicar.",
-        requirements: "Navegador atualizado.",
-        sourceUrl: "https://itch.io/games",
-        downloadUrl: "",
-        featured: false
-      },
-      {
-        id: "strategy-demo",
-        title: "Empire Tactics",
-        category: "Estratégia",
-        platform: "PC",
-        size: "A confirmar",
-        version: "A confirmar",
-        developer: "A preencher",
-        description: "Exemplo de jogo de estratégia. Não representa uma recomendação nem uma verificação de segurança.",
-        requirements: "Consulta os requisitos oficiais do jogo.",
-        sourceUrl: "https://store.steampowered.com/",
-        downloadUrl: "",
-        featured: false
-      }
-    ];
-
-    const grid = document.getElementById("gamesGrid");
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilter = document.getElementById("categoryFilter");
-    const platformFilter = document.getElementById("platformFilter");
-    const resultCount = document.getElementById("resultCount");
-    const detailsSection = document.getElementById("gameDetails");
-    const detailContent = document.getElementById("detailContent");
-    let quickFilter = "all";
-
-    function escapeHTML(value) {
-      return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-      })[char]);
-    }
-
-    function safeHttpUrl(value) {
-      try {
-        const url = new URL(value);
-        return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
-      } catch {
-        return "";
-      }
-    }
-
-    function filteredGames() {
-      const query = searchInput.value.trim().toLocaleLowerCase("pt-PT");
-      return games.filter(game => {
-        const matchesText = `${game.title} ${game.description} ${game.category} ${game.platform}`
-          .toLocaleLowerCase("pt-PT").includes(query);
-        const matchesCategory = categoryFilter.value === "all" || game.category === categoryFilter.value;
-        const matchesPlatform = platformFilter.value === "all" || game.platform === platformFilter.value;
-        const matchesQuick = quickFilter === "all" || game.platform === quickFilter || game.category === quickFilter;
-        return matchesText && matchesCategory && matchesPlatform && matchesQuick;
-      });
-    }
-
-    function renderGames() {
-      const visibleGames = filteredGames();
-      resultCount.textContent = `${visibleGames.length} ${visibleGames.length === 1 ? "jogo" : "jogos"}`;
-
-      if (!visibleGames.length) {
-        grid.innerHTML = '<div class="empty-state"><strong>Nenhum jogo encontrado.</strong><br>Tenta outro nome ou altera os filtros.</div>';
-        return;
-      }
-
-      grid.innerHTML = visibleGames.map(game => `
-        <article class="game-card">
-          <div class="placeholder-art" aria-hidden="true">GG<small>${escapeHTML(game.category)}</small></div>
-          <div class="card-body">
-            <span class="card-tag">${escapeHTML(game.category)}</span>
-            <h3 class="card-title">${escapeHTML(game.title)}</h3>
-            <p class="card-description">${escapeHTML(game.description)}</p>
-            <div class="card-meta">
-              <span>▣ ${escapeHTML(game.platform)}</span>
-              <span>◷ ${escapeHTML(game.size)}</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-secondary" type="button" data-details="${escapeHTML(game.id)}">Ver detalhes</button>
-              ${safeHttpUrl(game.downloadUrl)
-                ? `<a class="btn btn-primary" href="${escapeHTML(safeHttpUrl(game.downloadUrl))}" target="_blank" rel="noopener noreferrer">Download</a>`
-                : `<a class="btn btn-primary" href="${escapeHTML(safeHttpUrl(game.sourceUrl) || "#")}" ${safeHttpUrl(game.sourceUrl) ? 'target="_blank" rel="noopener noreferrer"' : ""}>Fonte oficial</a>`}
-            </div>
-          </div>
-        </article>
-      `).join("");
-    }
-
-    function renderDetails(id) {
-      const game = games.find(item => item.id === id);
-      if (!game) return;
-
-      const source = safeHttpUrl(game.sourceUrl);
-      const download = safeHttpUrl(game.downloadUrl);
-      detailContent.innerHTML = `
-        <span class="eyebrow">${escapeHTML(game.category)} · ${escapeHTML(game.platform)}</span>
-        <h2 class="inner-game-title" id="detailTitle">${escapeHTML(game.title)}</h2>
-        <p class="detail-description">${escapeHTML(game.description)}</p>
-
-        <div class="security-badge">
-          <span class="security-icon" a
+<header><div class="header-wrap"><a class="brand" href="#inicio" id="homeLink">Giga<span>Games</span></a><nav aria-label="Navegação principal"><a href="#inicio">Início</a><a href="#catalogo">Catálogo</a><a href="#favoritos">Favoritos</a><a href="#populares">Populares</a><a href="#novidades">Novidades</a><a href="#sobre">Sobre</a></nav></div></header>
+<main class="container">
+<section class="hero" id="inicio"><span class="eyebrow">● O teu próximo jogo começa aqui</span><h1>Encontra o teu próximo <span>jogo favorito.</span></h1><p>Explora o catálogo, consulta os requisitos e segue para fontes oficiais ou autorizadas. Guarda os teus jogos favoritos e avalia os que conheces.</p></section>
+<section id="catalogo"><div class="filter-bar" role="search"><input class="search-input" id="searchInput" type="search" placeholder="Pesquisar por nome de jogo..." aria-label="Pesquisar jogos"><select class="filter-select" id="categoryFilter" aria-label="Filtrar por categoria"><option value="all">Todas as categorias</option><option>Ação</option><option>Corrida</option><option>Aventura</option><option>Estratégia</option></select><select class="filter-select" id="platformFilter" aria-label="Filtrar por plataforma"><option value="all">Todas as plataformas</option><option>Android</option><option>PC</option><option>Web</option></select></div>
+<div class="section-head"><div><h2>Catálogo de jogos</h2><p>Os jogos abaixo são exemplos editáveis. Substitui-os por dados reais antes de publicar.</p></div><span class="result-count" id="resultCount" aria-live="polite"></span></div>
+<div class="curated-row" aria-label="Filtros rápidos"><button class="curated-badge active" data-quick="all">Todos</button><button class="curated-badge" data-quick="Android">Android</button><button class="curated-badge" data-quick="PC">PC</button><button class="curated-badge" data-quick="Corrida">Corrida</button><button class="curated-badge" data-quick="Ação">Ação</button></div><div class="games-grid" id="gamesGrid"></div></section>
+<section class="content-section" id="favoritos"><div class="section-head"><div><h2>♡ Os meus favoritos</h2><p>Ficam guardados neste dispositivo e navegador.</p></div><span class="result-count" id="favoriteCount"></span></div><div class="games-grid" id="favoritesGrid"></div></section>
+<section class="content-section" id="populares"><div class="section-head"><div><h2>🔥 Jogos populares / em destaque</h2><p>Controla os destaques através da propriedade featured no JavaScript.</p></div></div><div class="games-grid" id="popularGrid"></div></section>
+<section class="content-section" id="novidades"><div class="section-head"><div><h2>📰 Novidades e dicas</h2><p>Dicas úteis para escolher e instalar jogos.</p></div></div><div class="news-grid"><article class="news-card"><div>🛡️</div><h3>Antes de instalar</h3><p>Confirma o nome do criador, os requisitos e se o endereço pertence a uma página oficial ou loja autorizada. Evita ficheiros de origem desconhecida.</p></article><article class="news-card"><div>📱</div><h3>Escolhe a plataforma certa</h3><p>Verifica se o jogo é compatível com Android, PC ou navegador e consulta o espaço necessário antes de descarregar.</p></article><article class="news-card"><div>⭐</div><h3>Avalia os teus jogos</h3><p>As estrelas guardam a tua avaliação neste dispositivo. Não são avaliações públicas nem partilhadas com outros visitantes.</p></article></div></section>
+<section class="detail-panel hidden" id="gameDetails"><button class="btn btn-secondary" id="backButton" type="button">← Voltar ao catálogo</button><div id="detailContent"></div></section>
+<section id="sobre" class="detail-box" style="margin:42px 0"><h2>Sobre o GigaGames</h2><p class="detail-description">O GigaGames é um catálogo para organizar informações sobre jogos. Usa links oficiais, páginas dos criadores ou lojas autorizadas. O site não aloja nem verifica automaticamente ficheiros de terceiros. Favoritos e avaliações ficam guardados localmente no navegador.</p></section>
+</main><footer><div class="container footer-inner"><p>© <span id="year"></span> GigaGames. Todos os direitos dos jogos pertencem aos respetivos titulares.</p><p>Confirma a origem e os requisitos dos ficheiros antes de instalar.</p></div></footer>
+<script>
+"use strict";
+// Troca estes exemplos por jogos reais. Usa apenas links oficiais/autorizados.
+// imageUrl é opcional; downloadUrl vazio faz aparecer a ligação da fonte oficial.
+const games=[
+{id:"racer-demo",title:"Racing Adventure",category:"Corrida",platform:"Android",size:"A confirmar",version:"A confirmar",developer:"A preencher",description:"Exemplo de cartão para um jogo de corrida. Substitui esta descrição por informação verificada.",requirements:"Consulta a página oficial do jogo.",sourceUrl:"https://play.google.com/store",downloadUrl:"",imageUrl:"",featured:true},
+{id:"action-demo",title:"Action Arena",category:"Ação",platform:"PC",size:"A confirmar",version:"A confirmar",developer:"A preencher",description:"Exemplo de jogo de ação. Adiciona uma descrição curta, clara e verdadeira.",requirements:"Consulta os requisitos oficiais do jogo.",sourceUrl:"https://store.steampowered.com/",downloadUrl:"",imageUrl:"",featured:true},
+{id:"adventure-demo",title:"Mystic Quest",category:"Aventura",platform:"Web",size:"Não aplicável",version:"A confirmar",developer:"A preencher",description:"Exemplo de jogo de aventura. Atualiza os dados e a fonte antes de publicar.",requirements:"Navegador atualizado.",sourceUrl:"https://itch.io/games",downloadUrl:"",imageUrl:"",featured:false},
+{id:"strategy-demo",title:"Empire Tactics",category:"Estratégia",platform:"PC",size:"A confirmar",version:"A confirmar",developer:"A preencher",description:"Exemplo de jogo de estratégia; não representa uma recomendação nem uma verificação de segurança.",requirements:"Consulta os requisitos oficiais do jogo.",sourceUrl:"https://store.steampowered.com/",downloadUrl:"",imageUrl:"",featured:false}
+];
+const $=id=>document.getElementById(id),grid=$("gamesGrid"),favoritesGrid=$("favoritesGrid"),popularGrid=$("popularGrid"),searchInput=$("searchInput"),categoryFilter=$("categoryFilter"),platformFilter=$("platformFilter"),detailsSection=$("gameDetails"),detailContent=$("detailContent");
+let quickFilter="all",favorites=readStore("gigagames-favorites",[]),ratings=readStore("gigagames-ratings",{});
+function readStore(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
+function saveStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{}}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function safeUrl(v){try{const u=new URL(v);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return""}}
+function isFav(id){return favorites.includes(id)}
+function stars(g){let r=Number(ratings[g.id]||0);return `<div class="rating" aria-label="A tua avaliação">${[1,2,3,4,5].map(n=>`<button type="button" class="star-btn ${n<=r?"selected":""}" data-rate="${esc(g.id)}" data-value="${n}" aria-label="${n} de 5 estrelas" aria-pressed="${n===r}">★</button>`).join("")}<span class="rating-label">${r?`${r}/5 · tua avaliação`:"Avalia este jogo"}</span></div>`}
+function card(g){let src=safeUrl(g.sourceUrl),dl=safeUrl(g.downloadUrl),img=safeUrl(g.imageUrl);let visual=img?`<img class="card-thumb" src="${esc(img)}" alt="Imagem de ${esc(g.title)}" loading="lazy">`:`<div class="placeholder-art" aria-hidden="true">GG<small>${esc(g.category)}</small></div>`;let link=dl?`<a class="btn btn-primary" href="${esc(dl)}" target="_blank" rel="noopener noreferrer">Download</a>`:`<a class="btn btn-primary" href="${esc(src||"#")}" ${src?'target="_blank" rel="noopener noreferrer"': 'aria-disabled="true"'}>Fonte oficial</a>`;return `<article class="game-card">${visual}<div class="card-body"><span class="card-tag">${esc(g.category)}${g.featured?" · Destaque":""}</span><h3 class="card-title">${esc(g.title)}</h3><p class="card-description">${esc(g.description)}</p><div class="card-meta"><span>▣ ${esc(g.platform)}</span><span>◷ ${esc(g.size)}</span></div>${stars(g)}<div class="card-actions"><button class="btn btn-secondary" type="button" data-details="${esc(g.id)}">Ver detalhes</button><button class="favorite-btn ${isFav(g.id)?"is-favorite":""}" type="button" data-favorite="${esc(g.id)}" aria-label="Alternar favorito" aria-pressed="${isFav(g.id)}">${isFav(g.id)?"♥":"♡"}</button>${link}</div></div></article>`}
+function filtered(){let q=searchInput.value.trim().toLocaleLowerCase("pt-PT");return games.filter(g=>`${g.title} ${g.description} ${g.category} ${g.platform} ${g.developer}`.toLocaleLowerCase("pt-PT").includes(q)&&(categoryFilter.value==="all"||g.category===categoryFilter.value)&&(platformFilter.value==="all"||g.platform===platformFilter.value)&&(quickFilter==="all"||g.platform===quickFilter||g.category===quickFilter))}
+function draw(target,list,msg){target.innerHTML=list.length?list.map(card).join(""):`<div class="empty-state">${msg}</div>`}
+function render(){let shown=filtered();$("resultCount").textContent=`${shown.length} ${shown.length===1?"jogo":"jogos"}`;draw(grid,shown,"Nenhum jogo encontrado. Altera a pesquisa ou os filtros.");let fav=games.filter(g=>isFav(g.id));$("favoriteCount").textContent=`${fav.length} guardado(s)`;draw(favoritesGrid,fav,"Ainda não guardaste jogos. Carrega no ♡ num cartão para adicionar um favorito.");draw(popularGrid,games.filter(g=>g.featured),"Ainda não há jogos em destaque. Define featured: true no JavaScript.");document.querySelectorAll("[data-quick]").forEach(b=>b.classList.toggle("active",b.dataset.quick===quickFilter))}
+function showDetails(id){let g=games.find(x=>x.id===id);if(!g)return;let src=safeUrl(g.sourceUrl),dl=safeUrl(g.downloadUrl);detailContent.innerHTML=`<span class="eyebrow">${esc(g.category)} · ${esc(g.platform)}</span><h2 class="inner-game-title" id="detailTitle">${esc(g.title)}</h2><p class="detail-description">${esc(g.description)}</p><div class="security-badge"><span class="security-icon">✓</span><div><strong>Verifica a origem antes de instalar.</strong><br>Este site não analisa ficheiros automaticamente. Usa páginas oficiais ou fontes em que confies.</div></div><div class="game-details-layout"><div class="detail-box"><h3>Informações do jogo</h3>${[["Plataforma",g.platform],["Categoria",g.category],["Criador",g.developer],["Versão",g.version],["Tamanho",g.size],["Requisitos",g.requirements]].map(([k,v])=>`<div class="tech-row"><span class="tech-label">${esc(k)}</span><span class="tech-value">${esc(v||"A confirmar")}</span></div>`).join("")}</div><div class="detail-box"><h3>A tua avaliação</h3>${stars(g)}<p class="notice">A avaliação fica guardada apenas neste navegador.</p><button class="btn btn-secondary" type="button" data-favorite="${esc(g.id)}">${isFav(g.id)?"♥ Remover dos favoritos":"♡ Adicionar aos favoritos"}</button></div></div><div class="download-zone"><h3>Onde encontrar o jogo</h3><p>Confirma o endereço e os requisitos na página do criador ou numa loja autorizada.</p>${dl?`<a class="btn btn-primary" href="${esc(dl)}" target="_blank" rel="noopener noreferrer">Abrir download</a>`:src?`<a class="btn btn-primary" href="${esc(src)}" target="_blank" rel="noopener noreferrer">Abrir fonte oficial</a>`:"<p class='notice'>Ainda não foi indicada uma fonte válida.</p>"}</div>`;detailsSection.classList.remove("hidden");detailsSection.scrollIntoView({behavior:"smooth",block:"start"})}
+function toggleFav(id){favorites=isFav(id)?favorites.filter(x=>x!==id):[...favorites,id];saveStore("gigagames-favorites",favorites);render();let title=detailContent.querySelector("#detailTitle");if(title&&games.find(g=>g.id===id)?.title===title.textContent)showDetails(id)}
+function rate(id,value){ratings[id]=Number(value);saveStore("gigagames-ratings",ratings);render();let title=detailContent.querySelector("#detailTitle");if(title&&games.find(g=>g.id===id)?.title===title.textContent)showDetails(id)}
+searchInput.addEventListener("input",render);categoryFilter.addEventListener("change",render);platformFilter.addEventListener("change",render);
+document.querySelectorAll("[data-quick]").forEach(b=>b.addEventListener("click",()=>{quickFilter=b.dataset.quick;render()}));
+document.addEventListener("click",e=>{let d=e.target.closest("[data-details]"),f=e.target.closest("[data-favorite]"),r=e.target.closest("[data-rate]");if(d)showDetails(d.dataset.details);if(f)toggleFav(f.dataset.favorite);if(r)rate(r.dataset.rate,r.dataset.value)}
